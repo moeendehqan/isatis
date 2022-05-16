@@ -2,6 +2,7 @@ import './login.css'
 import {useState} from 'react'
 import axios from 'axios'
 
+
 const Login = (props) => {
 
     const [username, setUsername] = useState('')
@@ -30,7 +31,7 @@ const Login = (props) => {
             data: {username:username, password:password, keylogin:keylogin}
         }).then((response)=>{
             if(response.data.res){
-                props.handleModeApp('desk')
+                props.handleModeApp('desk',username)
             }else{
                 setMsg(response.msg)
             }

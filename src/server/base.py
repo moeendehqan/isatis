@@ -16,7 +16,7 @@ CORS(app)
 
 
 @app.route('/api/login', methods=["POST"])
-def listalarm():
+def login():
     data =  request.get_json()
     username = data['username']
     password = data['password']
@@ -27,6 +27,22 @@ def listalarm():
 
     else:
         return json.dumps({'res':False,'msg':'اطلاعات وارد شده صحیح نیست'})
+
+
+@app.route('/api/userfromsymbol', methods=["POST"])
+def userfromsymbol():
+    data =  request.get_json()
+    username = data['username']
+    user = pd.DataFrame(user_colection.find({'username':username}))
+    if len(user)==1:
+        symbol = user['symbol'][user.index.max()]
+        return json.dumps({'res':True, 'symbol':symbol})
+
+    else:
+        return json.dumps({'res':False,'msg':'نام کاربری یافت نشد'})
+
+
+
 
 
 if __name__ == '__main__':

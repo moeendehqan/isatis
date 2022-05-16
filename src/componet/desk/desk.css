@@ -1,0 +1,23 @@
+.desk .title{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    background-color:#232426;
+    height:60px;
+    color:#f2f2f2;
+    font-family: 'IBM Plex Sans Arabic';
+    font-weight:700;
+    font-size: 23px;
+    line-height:2.5;
+}
+
+.desk .title h3{
+    flex:5;
+}
+.desk .title h4{
+    flex:0;
+    margin-left: 35px;
+    font-size: 15px;
+    color:#FB9183;
+}
