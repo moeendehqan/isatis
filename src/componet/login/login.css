@@ -17,8 +17,7 @@
     font-family: 'IBM Plex Sans Arabic';
     width:250px;
     margin: 30px;
-    top:25%;
-
+    margin-top: 100px;
 }
 
 .ent{
@@ -27,8 +26,7 @@
     font-family: 'IBM Plex Sans Arabic';
     width:250px;
     margin: 30px;
-    top:20%;
-
+    margin-top: 100px;
 }
 
 .ent>div{
@@ -38,5 +36,44 @@
 }
 
 .ent img{
-    margin-left: 50px;
+    margin-left: 40px;
+}
+
+.ent form{
+    margin-top: 50px;
+}
+
+.ent .fld{
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 15px;
+}
+
+.ent .fld input{
+    width: 130px;
+    border: 0px;
+    position: absolute;
+    right: 80px;
+    opacity: 0.5;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.ent button{
+    border: 0px;
+    margin-top: 20px;
+    position: absolute;
+    right: 80px;
+    width: 130px;
+    opacity: 0.8;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.ent .errmsg{
+    color: #363e40;
+    position: relative;
+    top: 80px;
+    right: 80px;
 }
