@@ -1,0 +1,42 @@
+
+
+.login{
+    height: 100vh;
+    width: 100%;
+    background-image: url('../../img/peakpx.jpg');
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+    flex-wrap:wrap;
+    background-size: cover;
+}
+
+.dtl{
+    position: relative;
+    text-align:right;
+    font-family: 'IBM Plex Sans Arabic';
+    width:250px;
+    margin: 30px;
+    top:25%;
+
+}
+
+.ent{
+    position: relative;
+    text-align:right;
+    font-family: 'IBM Plex Sans Arabic';
+    width:250px;
+    margin: 30px;
+    top:20%;
+
+}
+
+.ent>div{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.ent img{
+    margin-left: 50px;
+}
