@@ -1,7 +1,7 @@
 import './desk.css'
 import {useState, useEffect} from 'react'
 import axios from 'axios'
-import Menu from './menuright'
+import Menu from './menu/menuright'
 
 const Desk = (props) =>{
 
@@ -22,7 +22,12 @@ const Desk = (props) =>{
 
     const [menuright , setMenuright] = useState(true)
     const handleMenuright = () =>{setMenuright(!menuright)}
-    console.log(menuright)
+
+    const [viw , setViw] = useState('uploadfile')
+    const handleViw = (v) =>{
+        setViw(v)
+    }
+    console.log(viw)
 
 
     if(props.mode==='desk'){
@@ -34,7 +39,7 @@ const Desk = (props) =>{
                     <h4>محرمانه</h4>
                 </nav>
                 <main>
-                    <Menu menuright={menuright} />
+                    <Menu menuright={menuright} handleViw={handleViw}/>
                     <div className='viw'>
                         نمایش
                     </div>
