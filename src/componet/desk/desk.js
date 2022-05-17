@@ -2,6 +2,8 @@ import './desk.css'
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import Menu from './menu/menuright'
+import Upload from './view/upload'
+
 
 const Desk = (props) =>{
 
@@ -41,7 +43,7 @@ const Desk = (props) =>{
                 <main>
                     <Menu menuright={menuright} handleViw={handleViw}/>
                     <div className='viw'>
-                        نمایش
+                        <Upload viw={viw}/>
                     </div>
                     
 
