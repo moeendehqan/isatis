@@ -43,8 +43,15 @@
 }
 
 .menur .btm{
-    background-color: darkgray;
-    margin-top: 10px;
+    background-color: #8c9ec5;
+    border: 0px;
+    height: 30px;
+}
+
+
+.menur .btm:hover{
+    background-color: #d89a76;
+
 }
 
 .viw{
