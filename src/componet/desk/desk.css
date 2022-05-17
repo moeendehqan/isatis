@@ -59,3 +59,29 @@
     height: 450px;
     background-color: #FB9183;
 }
+
+.upload img{
+    height: 60px;
+    position: relative;
+    top: 30px;
+    margin: 30px;
+}
+
+
+.upload form{
+    position: relative;
+    top: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.upload form label{
+    margin: 15px;
+}
+
+.upload .uplbtn{
+    margin-top: 20px;
+    width: 100px;
+    background-color: #232426;
+    color: #f2f2f2;
+}
