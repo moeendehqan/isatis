@@ -13,7 +13,7 @@ user_colection = roundtrade_db['user']
 
 app = Flask(__name__)
 CORS(app)
-
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 @app.route('/api/login', methods=["POST"])
 def login():
@@ -42,7 +42,11 @@ def userfromsymbol():
         return json.dumps({'res':False,'msg':'نام کاربری یافت نشد'})
 
 
-
+@app.route('/api/getfile', methods=["POST"])
+def getfile():
+    data =  request.files['file']
+    print(data.filename)
+    return json.dumps({'res':False,'msg':data.filename})
 
 
 if __name__ == '__main__':

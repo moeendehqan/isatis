@@ -29,7 +29,6 @@ const Desk = (props) =>{
     const handleViw = (v) =>{
         setViw(v)
     }
-    console.log(viw)
 
 
     if(props.mode==='desk'){
