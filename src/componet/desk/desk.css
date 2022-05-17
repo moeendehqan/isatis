@@ -21,3 +21,9 @@
     font-size: 15px;
     color:#FB9183;
 }
+
+.desk .title img{
+    flex: 0;
+    margin-right: 35px;
+    height: 30px;
+}
