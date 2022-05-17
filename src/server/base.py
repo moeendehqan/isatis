@@ -44,8 +44,9 @@ def userfromsymbol():
 
 @app.route('/api/getfile', methods=["POST"])
 def getfile():
-    data =  request.files['file']
-    print(data.filename)
+    data =  request.files['Trade']
+    df = pd.read_excel(data)
+    print(df)
     return json.dumps({'res':False,'msg':data.filename})
 
 

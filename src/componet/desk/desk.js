@@ -14,7 +14,8 @@ const Desk = (props) =>{
         axios({
             method: 'post',
             url: "http://localhost:5000/api/userfromsymbol",
-            data: {username:user}
+            data: {username:user},
+            config : {headers:{'content-type': 'multipart/form-data'}}
         }).then((response)=>{
             setSymbol(response.data.symbol)
         }).catch((response)=>{
