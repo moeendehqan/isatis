@@ -27,3 +27,28 @@
     margin-right: 35px;
     height: 30px;
 }
+
+.desk main{
+    position: relative;
+
+}
+.menur{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 160px;
+    z-index: 1;
+    right: 0px;
+    background-color: #758ab6;
+}
+
+.menur .btm{
+    background-color: darkgray;
+    margin-top: 10px;
+}
+
+.viw{
+    width: 100%;
+    height: 450px;
+    background-color: #FB9183;
+}

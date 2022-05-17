@@ -33,7 +33,15 @@ const Desk = (props) =>{
                     <h3>{symbol}</h3>
                     <h4>محرمانه</h4>
                 </nav>
-                <Menu menuright={menuright} />
+                <main>
+                    <Menu menuright={menuright} />
+                    <div className='viw'>
+                        نمایش
+                    </div>
+                    
+
+                </main>
+                
                 
             </div>
         )
