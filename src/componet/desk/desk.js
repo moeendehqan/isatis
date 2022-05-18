@@ -43,7 +43,7 @@ const Desk = (props) =>{
                 <main>
                     <Menu menuright={menuright} handleViw={handleViw}/>
                     <div className='viw'>
-                        <Upload viw={viw}/>
+                        <Upload viw={viw} user={user}/>
                     </div>
                     
 

@@ -44,10 +44,31 @@ def userfromsymbol():
 
 @app.route('/api/getfile', methods=["POST"])
 def getfile():
-    data =  request.files['Trade']
-    df = pd.read_excel(data)
-    print(df)
-    return json.dumps({'res':False,'msg':data.filename})
+    user = request.files['user']
+    Trade =  request.files['Trade']
+    Register =  request.files['Register']
+    TradeType = Trade.filename.split('.')[-1]
+    RegisterType = Register.filename.split('.')[-1]
+
+    if TradeType == 'xlsx':
+        dfTrade = pd.read_excel(Trade)
+    elif TradeType == 'csv':
+        dfTrade = pd.read_csv(Trade)
+    else:
+        return json.dumps({'res':False,'msg':'نوع فایل معاملات مجاز نیست'})
+
+    if RegisterType == 'xlsx':
+        dfRegister = pd.read_excel(Register)
+    elif RegisterType == 'csv':
+        dfRegister = pd.read_csv(Register)
+    else:
+        return json.dumps({'res':False,'msg':'نوع فایل رجیستر مجاز نیست'})
+    
+    print(user)
+
+    
+
+        
 
 
 if __name__ == '__main__':
