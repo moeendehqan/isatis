@@ -82,10 +82,11 @@
 .upload form label{
     display: flex;
     flex-direction: row-reverse;
+    flex-wrap: wrap;
     margin: 15px;
     background-color: #949fa6;
     border-radius: 5px;
-    height: 25px;
+    min-height: 25px;
     padding: 7px 15px;
     align-items: center;
 }
@@ -100,6 +101,7 @@
     border-radius: 5px;
 }
 
-.uplbtn .dtl{
+.upload .dtl{
+    flex-grow:2;
 
 }
