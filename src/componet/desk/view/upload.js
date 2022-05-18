@@ -16,7 +16,7 @@ const Upload = (props) =>{
     const [fileregister, setFileregister] = useState(null)
     const [isFileRegister, setIsFileRegister] = useState(false)
     const handlefileregister = (e) =>{
-        setFileregister(e.target.file[0])
+        setFileregister(e.target.files[0])
         setIsFileRegister(true)
     }
 
@@ -57,6 +57,7 @@ const Upload = (props) =>{
                 const formData = new FormData();
                 formData.append('Trade',filetrade)
                 formData.append('Register',fileregister)
+                formData.append('user',props.user)
                 axios({
                     method: 'post',
                     url: "http://localhost:5000/api/getfile",
