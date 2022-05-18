@@ -101,7 +101,8 @@
     border-radius: 5px;
 }
 
-.upload .dtl{
-    flex-grow:2;
-
+#msgupload{
+    position: relative;
+    margin-top: 20px;
+    right: -100px;
 }
