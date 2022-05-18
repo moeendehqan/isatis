@@ -30,23 +30,29 @@ const Upload = (props) =>{
     }
 
     const handleFormUpload = (e) =>{
+        e.preventDefault();
         if(isFileTrade){
-            e.preventDefault();
-            const formData = new FormData();
-            formData.append('Trade',filetrade)
-            formData.append('Register',fileregister)
-            axios({
-                method: 'post',
-                url: "http://localhost:5000/api/getfile",
-                data: formData,
-            }).then((response)=>{
-                console.log(response.data.msg)
-            }).catch((response)=>{
-                console.log(response)
-            })
+            if(isFileRegister){
+                const formData = new FormData();
+                formData.append('Trade',filetrade)
+                formData.append('Register',fileregister)
+                axios({
+                    method: 'post',
+                    url: "http://localhost:5000/api/getfile",
+                    data: formData,
+                }).then((response)=>{
+                    console.log(response.data.msg)
+                }).catch((response)=>{
+                    console.log(response)
+                })
+            }else{
+                setMsg('فایل رجیستر را وارد کنید')
+                fileregisterRef.current.focus()
+            }
+
         }else{
             setMsg('فایل معاملات را وارد کنید')
-            filetradeRef.current.focuse()
+            filetradeRef.current.focus()
         }
         
 
@@ -67,6 +73,7 @@ const Upload = (props) =>{
                         <input type='file' onChange={(e)=>handlefileregister(e)} ref={fileregisterRef}></input>
                     </label>
                     <button className='uplbtn' type='submit'>بارگذاری</button>
+                    <p id='msgupload'>{msg}</p>
                 </form>
             </div>
         )
