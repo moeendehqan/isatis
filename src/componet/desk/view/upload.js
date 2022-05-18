@@ -23,16 +23,37 @@ const Upload = (props) =>{
 
     const [msg, setMsg] = useState('')
 
-    const typeAllowe = ['xlsx']
+    const typeAllowe = ['xlsx','csv']
+
     if(isFileTrade){
-        const typetrade = filetrade.name.split('.')[filetrade.name.split('.').length -1]
-        console.log(typetrade)
+        const typetrade = (filetrade.name.split('.')[filetrade.name.split('.').length -1])
+        const alloweTrade = typeAllowe.includes(typetrade)
+        console.log(alloweTrade)
     }
+    
 
     const handleFormUpload = (e) =>{
         e.preventDefault();
-        if(isFileTrade){
-            if(isFileRegister){
+        if(!isFileTrade){
+            setMsg('فایل معاملات را وارد کنید')
+            filetradeRef.current.focus()
+        }else if(!isFileRegister){
+                setMsg('فایل رجیستر را وارد کنید')
+                fileregisterRef.current.focus()
+        }else{
+            const typetrade = (filetrade.name.split('.')[filetrade.name.split('.').length -1])
+            const alloweTrade = typeAllowe.includes(typetrade)
+
+            const typeregister = (fileregister.name.split('.')[fileregister.name.split('.').length -1])
+            const alloweRegister = typeAllowe.includes(typeregister)
+
+            if(!alloweTrade){
+                setMsg('نوع فایل معاملات مجاز نیست')
+                filetradeRef.current.focus()
+            }else if(!alloweRegister){
+                setMsg('نوع فایل رجیستر مجاز نیست')
+                filetradeRef.current.focus()
+            }else{
                 const formData = new FormData();
                 formData.append('Trade',filetrade)
                 formData.append('Register',fileregister)
@@ -45,17 +66,8 @@ const Upload = (props) =>{
                 }).catch((response)=>{
                     console.log(response)
                 })
-            }else{
-                setMsg('فایل رجیستر را وارد کنید')
-                fileregisterRef.current.focus()
             }
-
-        }else{
-            setMsg('فایل معاملات را وارد کنید')
-            filetradeRef.current.focus()
         }
-        
-
     }
 
 
