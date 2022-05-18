@@ -46,9 +46,9 @@ def userfromsymbol():
 def getfile():
     Trade =  request.files['Trade']
     Register =  request.files['Register']
+    '''
     TradeType = Trade.filename.split('.')[-1]
     RegisterType = Register.filename.split('.')[-1]
-
     if TradeType == 'xlsx':
         dfTrade = pd.read_excel(Trade)
     elif TradeType == 'csv':
@@ -64,7 +64,7 @@ def getfile():
         return json.dumps({'res':False,'msg':'نوع فایل رجیستر مجاز نیست'})
     
     print(dfTrade)
-
+'''
     
 
         
