@@ -11,14 +11,25 @@ const Upload = (props) =>{
     }
 
     const [fileregister, setFileregister] = useState(null)
+    const [isFaileRegister, setIsFaileRegister] = useState(false)
+    const handlefileregister = (e) =>{
+        setFileregister(e.target.file[0])
+        setIsFaileRegister(true)
+    }
 
-    const handleFormUpload = () =>{
-        const formDataTrade = new FormData();
-        formDataTrade.append('Trade',filetrade)
+    if(isFaileTrade===true){
+        console.log(filetrade.name)
+    }
+
+    const handleFormUpload = (e) =>{
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('Trade',filetrade)
+        formData.append('Register',fileregister)
         axios({
             method: 'post',
             url: "http://localhost:5000/api/getfile",
-            data: formDataTrade,
+            data: formData,
         }).then((response)=>{
             console.log(response.data.msg)
         }).catch((response)=>{
@@ -35,10 +46,17 @@ const Upload = (props) =>{
                     <label>
                         <span> فایل  معاملات</span>
                         <input type='file' onChange={(e)=>handlefiletrade(e)}></input>
+                            {isFaileTrade?(
+                                <div className='dtl'>
+                                    <p>نوع:</p>
+                                    <p>{filetrade.name}</p>
+                                </div>
+                            ):(<p></p>)}
+
                     </label>
                     <label>
                     <span> فایل  رجیستر</span>
-                        <input type='file' onChange={(e)=>setFileregister(e.target.file[0])}></input>
+                        <input type='file' onChange={(e)=>handlefileregister(e)}></input>
                     </label>
                     <button className='uplbtn' type='submit'>بارگذاری</button>
                 </form>
