@@ -46,7 +46,9 @@ def userfromsymbol():
 def getfile():
     Trade =  request.files['Trade']
     Register =  request.files['Register']
-    
+    print(request.form)
+    return json.dumps({'res':True,'msg':'رسید'})
+
     '''
     TradeType = Trade.filename.split('.')[-1]
     RegisterType = Register.filename.split('.')[-1]
