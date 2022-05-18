@@ -44,7 +44,6 @@ def userfromsymbol():
 
 @app.route('/api/getfile', methods=["POST"])
 def getfile():
-    user = request.form['user']
     Trade =  request.files['Trade']
     Register =  request.files['Register']
     TradeType = Trade.filename.split('.')[-1]
@@ -64,7 +63,7 @@ def getfile():
     else:
         return json.dumps({'res':False,'msg':'نوع فایل رجیستر مجاز نیست'})
     
-    print(user)
+    print(dfTrade)
 
     
 
