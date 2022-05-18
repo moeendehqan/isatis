@@ -26,11 +26,11 @@ const Desk = (props) =>{
     const [menuright , setMenuright] = useState(true)
     const handleMenuright = () =>{setMenuright(!menuright)}
 
-    const [viw , setViw] = useState('uploadfile')
+    const [viw , setViw] = useState('upload')
     const handleViw = (v) =>{
         setViw(v)
     }
-
+    console.log(viw)
 
     if(props.mode==='desk'){
         return(
