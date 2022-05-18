@@ -57,6 +57,7 @@ const Upload = (props) =>{
                 const formData = new FormData();
                 formData.append('Trade',filetrade)
                 formData.append('Register',fileregister)
+                formData.append('user',props.user)
                 axios({
                     method: 'post',
                     url: "http://localhost:5000/api/getfile",
