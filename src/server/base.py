@@ -44,7 +44,7 @@ def userfromsymbol():
 
 @app.route('/api/getfile', methods=["POST"])
 def getfile():
-    user = request.form.get('user')
+    user = request.form['user']
     Trade =  request.files['Trade']
     Register =  request.files['Register']
     TradeType = Trade.filename.split('.')[-1]
