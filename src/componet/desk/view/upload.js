@@ -52,7 +52,7 @@ const Upload = (props) =>{
                 filetradeRef.current.focus()
             }else if(!alloweRegister){
                 setMsg('نوع فایل رجیستر مجاز نیست')
-                filetradeRef.current.focus()
+                fileregisterRef.current.focus()
             }else{
                 const formData = new FormData();
                 formData.append('Trade',filetrade)
