@@ -61,6 +61,7 @@ const Upload = (props) =>{
                     method: 'post',
                     url: "http://localhost:5000/api/getfile",
                     data: formData,
+                    config: {headers:{'content-type': 'multipart/form-data'}}
                 }).then((response)=>{
                     console.log(response.data.msg)
                 }).catch((response)=>{
