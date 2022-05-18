@@ -46,12 +46,18 @@ def userfromsymbol():
 def getfile():
     Trade =  request.files['Trade']
     Register =  request.files['Register']
-    print(request.files)
-    return json.dumps({'res':True,'msg':'رسید'})
+    user = request.form['user']
 
-    '''
+    symbol = pd.DataFrame(user_colection.find({'username':user}))
+    symbol = symbol['symbol'][symbol.index.max()]
+    symbol_db = client[f'{symbol}_db']
+
+    trade_collection = symbol_db['trade']
+    register_collection = symbol_db['register']
+
     TradeType = Trade.filename.split('.')[-1]
     RegisterType = Register.filename.split('.')[-1]
+
     if TradeType == 'xlsx':
         dfTrade = pd.read_excel(Trade)
     elif TradeType == 'csv':
@@ -65,13 +71,16 @@ def getfile():
         dfRegister = pd.read_csv(Register)
     else:
         return json.dumps({'res':False,'msg':'نوع فایل رجیستر مجاز نیست'})
-    
-    print(dfTrade)
-'''
+
     
 
-        
 
+    dfTrade = dfTrade.to_dict(orient='records')
+    dfRegister = dfRegister.to_dict(orient='records')
+
+    trade_collection.insert_many(dfTrade)
+    register_collection.insert_many(dfRegister)
+    return json.dumps({'res':False,'msg':'رسید و ثبت شد'})
 
 if __name__ == '__main__':
    app.run(debug=True)
