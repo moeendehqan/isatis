@@ -3,6 +3,7 @@ import axios from 'axios'
 
 
 const Upload = (props) =>{
+    const [disply, setDisply] = useState(['dnone',''])
 
     const filetradeRef = useRef(null)
     const [filetrade, setFiletrade] = useState(null)
@@ -54,6 +55,8 @@ const Upload = (props) =>{
                 setMsg('نوع فایل رجیستر مجاز نیست')
                 fileregisterRef.current.focus()
             }else{
+                setMsg('')
+                setDisply(['','dnone'])
                 const formData = new FormData();
                 formData.append('Trade',filetrade)
                 formData.append('Register',fileregister)
@@ -64,21 +67,25 @@ const Upload = (props) =>{
                     data: formData,
                     config: {headers:{'content-type': 'multipart/form-data'}}
                 }).then((response)=>{
-                    console.log(response.data.msg)
+                    setMsg(response.data.msg)
+                    setDisply(['dnone',''])
                 }).catch((response)=>{
                     console.log(response)
+                    setDisply(['dnone',''])
                 })
             }
         }
     }
 
 
+
+
     if(props.viw==='upload'){
         return(
             <div className="upload">
                 <img src={require('../../../img/icon/upload.png')} alt='upload icon'></img>
-                <form onSubmit={(e)=>handleFormUpload(e)}>
-                    <label>
+                <form className={'frmupl '+disply[1]} onSubmit={(e)=>handleFormUpload(e)}>
+                    <label >
                         <span> فایل  معاملات</span>
                         <input type='file' onChange={(e)=>handlefiletrade(e)} ref={filetradeRef}></input>
                     </label>
@@ -89,6 +96,7 @@ const Upload = (props) =>{
                     <button className='uplbtn' type='submit'>بارگذاری</button>
                     <p id='msgupload'>{msg}</p>
                 </form>
+                <div className={"loader"+disply[0]}></div>
             </div>
         )
     }

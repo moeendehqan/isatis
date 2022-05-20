@@ -63,6 +63,7 @@
     background-color: #f2f2f2;
 }
 
+
 .upload img{
     height: 80px;
     position: relative;
@@ -71,7 +72,7 @@
 }
 
 
-.upload form{
+.frmupl{
     position: relative;
     top: 35px;
     display: flex;
@@ -105,4 +106,96 @@
     position: relative;
     margin-top: 20px;
     right: -100px;
+}
+
+.loader {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    margin-left: -80px;
+    border: 12px solid #f2f2f2;
+    border-radius: 50%;
+    border-top: 12px solid #363e40;
+    border-bottom: 12px solid #363e40;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+.dnone{
+    display: none;
+}
+
+
+.traders{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    float:right;
+    height: 100%;
+    width: 100%;
+    background-color:#f2f2f2;
+    right:0;
+}
+.dateset{
+    margin-right:140px;
+    margin-top:30px;
+    display:flex;
+    flex-direction: row-reverse;
+    justify-content:center;
+    align-items:center;
+}
+
+.dateset img{
+    width:50px;
+    margin: auto 25px;
+
+}
+.dateset h5{
+     margin: auto 15px;
+}
+
+
+.rprttrd{
+    position: relative;
+    top:50px;
+    margin:auto auto;
+}
+
+.tabletr{
+    background-color:#363e40;
+    color:#fff;
+    border-radius:10px;
+    text-align:right;
+    padding:10px;
+}
+
+
+.tabletr .name{
+    width:50px;
+}
+
+.tabletr .volume{
+    width:80px;
+}
+
+.tabletr .price{
+    width:50px;
+}
+
+.tabletr .value{
+    width:100px;
 }
