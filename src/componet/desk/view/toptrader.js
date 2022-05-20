@@ -1,6 +1,8 @@
 import { useState ,useEffect} from 'react'
 import axios from 'axios'
 
+import Chart from 'react-chartjs-2';
+
 const Traders = (props) =>{
 
     const user = props.user
@@ -25,6 +27,21 @@ const Traders = (props) =>{
         mmax = Math.max(...vldate)
     }
 
+
+    
+    function separate(Number) 
+    {
+    Number+= '';
+    Number= Number.replace(',', '');
+    var x = Number.split('.');
+    var y = x[0];
+    var z= x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(y))
+    y= y.replace(rgx, '$1' + ',' + '$2');
+    return y+ z;
+    }
+
     const [report, setReport] = useState(false)
     const handleReport = ()=>{
         if(alldate !== null){
@@ -42,6 +59,9 @@ const Traders = (props) =>{
 
     useEffect(handleReport,[alldate])
 
+    const bb = {backgroundColor: "DodgerBlue"}
+
+
     if(props.viw==='Traders'){
         return(
             <div className="traders">
@@ -51,39 +71,20 @@ const Traders = (props) =>{
                     <h5 onClick={handleReport}>({mmax})</h5>
                 </div>
                 <div className='rprttrd'>
-                <table className='tabletr'>
-                    <thead>
-                    <tr>
-                        <th>ارزش</th>
-                        <th>قیمت</th>
-                        <th>حجم</th>
-                        <th>نام</th>
-                    </tr>
-                    </thead>
-
-                    {!report? null:(
-                <tbody> 
-                {report.map(item => {    
-                    return (
-                        <tr  key={item.id}> 
-                            {Object.keys(item).map(value => {
-                                    if(value!=='id')
-                                        
-                                        return (<td key={Math.floor(Math.random()*1000000).toString()+item.id.toString()} className={value}>{item[value]}</td>)
-                            })
-                            } 
-                        </tr>
-                            );
-                    })
-                }
-            </tbody>
-
+                    {!report?null:(
+                        report.map(row=>{
+                            var ww = {width:(row.w *50).toString()+'%'};
+                            return(
+                                <div className='rowtrd' key={row.id}>
+                                    <p style={ww}>{row.volume}</p>
+                                    <h5>{row.name}</h5>
+                                </div>
+                                )
+                        })
                     )
-                    
-                }
-                    </table>
+                    }
 
-                    
+
                 </div>
             </div>
         )
@@ -91,3 +92,13 @@ const Traders = (props) =>{
 }
 
 export default Traders
+
+
+
+
+//{Object.keys(item).map(value => {
+//    if(value!=='id')
+//        
+//        return (<td key={Math.floor(Math.random()*1000000).toString()+item.id.toString()} className={value}>{item[value]}</td>)
+//})
+//} 

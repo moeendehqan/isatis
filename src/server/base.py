@@ -146,6 +146,7 @@ def traderreport():
     dfbuy = dfbuy.sort_values(by=['Volume'],ascending=False)
     dfbuy = dfbuy.reset_index()
     dfbuy = dfbuy.reset_index()
+    dfbuy = dfbuy[dfbuy.index<10]
 
     dfbuy.columns = ['id','name','volume','value','price']
     dffinall = pd.DataFrame()
@@ -154,6 +155,7 @@ def traderreport():
     dffinall['volume'] = dfbuy['volume']
     dffinall['name'] = dfbuy['name']
     dffinall['id'] = dfbuy['id']
+    dffinall['w'] = (dffinall['volume']/dffinall['volume'].max())
     print(dffinall)
     dffinall['price'] = [round(x) for x in dffinall['price']]
     dffinall = dffinall.to_dict('records')
