@@ -49,7 +49,7 @@ const Toptraders = (props) =>{
             axios({
                 method: 'post',
                 url: "http://localhost:5000/api/traderreport",
-                data: {username:user, date:mmax, side:checked},
+                data: {username:user, date:datereport, side:checked},
             }).then((response)=>{
                 setReport(response.data.result)
             }).catch((response)=>{
