@@ -4,7 +4,6 @@ import axios from 'axios'
 const Toptraders = (props) =>{
 
     const user = props.user
-
     const [alldate, setAlldate] = useState(null)
     const handleAlldate = () =>{
         axios({
@@ -43,6 +42,14 @@ const Toptraders = (props) =>{
     return y+ z;
     }
 
+    const [datereport, setDatereport] = useState(mmax)
+    const handleDatereport = (e) =>{
+        setDatereport(e.target.value)
+    }
+
+    console.log(datereport)
+
+
     const [report, setReport] = useState(false)
     const handleReport = ()=>{
         if(alldate !== null){
@@ -58,12 +65,9 @@ const Toptraders = (props) =>{
         }
     }
 
-    const [datereport, setDatereport] = useState(mmax)
-    const handleDatereport = (e) =>{
-        setDatereport(e.target.value)
-    }
 
-    useEffect(handleReport,[alldate,checked])
+
+    useEffect(handleReport,[datereport,checked])
 
 
     if(props.viw==='Toptraders'){
