@@ -133,7 +133,10 @@ def traderreport():
     user = data['username']
     date = data['date']
     side = data['side']
-    print(side)
+    if side:
+        side = 'B_account'
+    else:
+        side: 'S_account'
 
     symbol = pd.DataFrame(user_colection.find({'username':user}))
     symbol = symbol['symbol'][symbol.index.max()]
@@ -141,7 +144,7 @@ def traderreport():
     trade_collection = symbol_db['trade']
     dftrade = pd.DataFrame(trade_collection.find({'Date':date}))
     dftrade['Value'] = dftrade['Volume'] * dftrade['Price']
-    dfbuy = dftrade.groupby(by=['B_account']).sum()
+    dfbuy = dftrade.groupby(by=['side']).sum()
     dfbuy = dfbuy[['Volume','Value']]
     dfbuy['Price'] = dfbuy['Value']/dfbuy['Volume']
     dfbuy.index = [fnc.CodeToName(x,symbol) for x in dfbuy.index]
