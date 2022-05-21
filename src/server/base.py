@@ -131,20 +131,25 @@ def alldate():
 def traderreport():
     data =  request.get_json()
     user = data['username']
-    date = data['date']
+    date = int(data['date'])
     side = data['side']
-    if int(date)>0:
-        if side:
-            side = 'B_account'
-        else:
-            side = 'S_account'
 
-        symbol = pd.DataFrame(user_colection.find({'username':user}))
-        symbol = symbol['symbol'][symbol.index.max()]
-        symbol_db = client[f'{symbol}_db']
-        trade_collection = symbol_db['trade']
-        dftrade = pd.DataFrame(trade_collection.find({'Date':date}))
-        dftrade['Value'] = dftrade['Volume'] * dftrade['Price']
+
+    if side:
+        side = 'B_account'
+    else:
+        side = 'S_account'
+
+    symbol = pd.DataFrame(user_colection.find({'username':user}))
+    symbol = symbol['symbol'][symbol.index.max()]
+    symbol_db = client[f'{symbol}_db']
+    trade_collection = symbol_db['trade']
+    dftrade = pd.DataFrame(trade_collection.find({'Date':date}))
+    print(dftrade)
+    dftrade['Value'] = dftrade['Volume'] * dftrade['Price']
+    if len(dftrade)<=0:
+        return json.dumps({'res':False})
+    else:
         dfside = dftrade.groupby(by=[side]).sum()
         dfside = dfside[['Volume','Value']]
         dfside['Price'] = dfside['Value']/dfside['Volume']
@@ -165,8 +170,7 @@ def traderreport():
         dffinall['price'] = [round(x) for x in dffinall['price']]
         dffinall = dffinall.to_dict('records')
         return json.dumps({'res':True,'result':dffinall})
-    else:
-        return json.dumps({'res':False})
+
 
 
 if __name__ == '__main__':
