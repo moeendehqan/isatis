@@ -4,9 +4,10 @@ import axios from 'axios'
 const Toptraders = (props) =>{
 
     const user = props.user
+
     const [alldate, setAlldate] = useState(null)
-    const handleAlldate = async () =>{
-        await axios({
+    const handleAlldate = () =>{
+        axios({
             method: 'post',
             url: "http://localhost:5000/api/alldate",
             data: {username:user},
@@ -16,9 +17,14 @@ const Toptraders = (props) =>{
             console.log(response)
         })}
 
-    useEffect(handleAlldate,user)
+    useEffect(handleAlldate,[user])
 
-    console.log(alldate)
+    var mmax = null;
+    if(alldate !== null){
+        const vldate = Object.values(alldate)
+        mmax = Math.max(...vldate)
+    }
+
     const [checked, setChecked] = useState(false);
     const handleChange = () => {setChecked(!checked)
     
@@ -37,33 +43,37 @@ const Toptraders = (props) =>{
     return y+ z;
     }
 
-    const [datereport, setDatereport] = useState(alldate[0])
+
+
+    const [datereport, setDatereport] = useState(mmax)
     const handleDatereport = (e) =>{
         setDatereport(e.target.value)
     }
+
+    console.log(datereport)
+    if(datereport===null){
+        setDatereport(mmax)
+    }
+
     console.log(datereport)
 
 
     const [report, setReport] = useState(false)
     const handleReport = ()=>{
-        if(datereport !== null){
-            axios({
-                method: 'post',
-                url: "http://localhost:5000/api/traderreport",
-                data: {username:user, date:datereport, side:checked},
-            }).then((response)=>{
-                if(response.data.res){
-                    setReport(response.data.result)
-                }
-            }).catch((response)=>{
-                console.log(response)
-            })
-        }
+        axios({
+            method: 'post',
+            url: "http://localhost:5000/api/traderreport",
+            data: {username:user, date:datereport, side:checked},
+        }).then((response)=>{
+            setReport(response.data.result)
+        }).catch((response)=>{
+            console.log(response)
+        })
     }
 
 
 
-    useEffect(handleReport,[datereport,checked,alldate])
+    useEffect(handleReport,[alldate,checked,datereport])
 
 
     if(props.viw==='Toptraders'){
@@ -73,11 +83,12 @@ const Toptraders = (props) =>{
                     <img src={require('../../../img/icon/dataset.png')} alt='icon dataset'></img>
                     <h5>تاریخ گزارشگری اخرین روز</h5>
                     <select value={datereport} onChange={(e)=>handleDatereport(e)}>
-                        {(datereport!==null)?
+                        {(mmax!==null)?
                         alldate.map(item=>
                             <option value={item} key={item.toString()}>{item}</option>
                             ):null}
                     </select>
+                    <h5>({mmax})</h5>
                 </div>
 
                 <div className='side'>
