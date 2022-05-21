@@ -144,7 +144,7 @@ def traderreport():
     trade_collection = symbol_db['trade']
     dftrade = pd.DataFrame(trade_collection.find({'Date':date}))
     dftrade['Value'] = dftrade['Volume'] * dftrade['Price']
-    dfside = dftrade.groupby(by=['side']).sum()
+    dfside = dftrade.groupby(by=[side]).sum()
     dfside = dfside[['Volume','Value']]
     dfside['Price'] = dfside['Value']/dfside['Volume']
     dfside.index = [fnc.CodeToName(x,symbol) for x in dfside.index]
