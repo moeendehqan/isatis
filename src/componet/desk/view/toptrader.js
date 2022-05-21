@@ -108,7 +108,7 @@ const Toptraders = (props) =>{
                             var ww = {width:(row.w *50).toString()+'%'};
                             return(
                                 <div className='rowtrd' key={row.id}>
-                                    <p style={ww}>{row.volume}</p>
+                                    <p style={ww}>{separate(row.volume)}</p>
                                     <h5>{row.name}</h5>
                                 </div>
                                 )
