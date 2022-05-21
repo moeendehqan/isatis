@@ -132,6 +132,8 @@ def traderreport():
     data =  request.get_json()
     user = data['username']
     date = data['date']
+    side = data['side']
+    print(side)
 
     symbol = pd.DataFrame(user_colection.find({'username':user}))
     symbol = symbol['symbol'][symbol.index.max()]
@@ -156,10 +158,8 @@ def traderreport():
     dffinall['name'] = dfbuy['name']
     dffinall['id'] = dfbuy['id']
     dffinall['w'] = (dffinall['volume']/dffinall['volume'].max())
-    print(dffinall)
     dffinall['price'] = [round(x) for x in dffinall['price']]
     dffinall = dffinall.to_dict('records')
-
     return json.dumps({'res':True,'result':dffinall})
 
 if __name__ == '__main__':

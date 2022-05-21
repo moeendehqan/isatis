@@ -49,7 +49,7 @@ const Toptraders = (props) =>{
             axios({
                 method: 'post',
                 url: "http://localhost:5000/api/traderreport",
-                data: {username:user, date:mmax},
+                data: {username:user, date:mmax, side:checked},
             }).then((response)=>{
                 setReport(response.data.result)
             }).catch((response)=>{
@@ -59,8 +59,6 @@ const Toptraders = (props) =>{
     }
 
     useEffect(handleReport,[alldate])
-
-    const bb = {backgroundColor: "DodgerBlue"}
 
 
     if(props.viw==='Toptraders'){
