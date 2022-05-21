@@ -71,19 +71,20 @@ const Toptraders = (props) =>{
                     <h5>تاریخ گزارشگری اخرین روز</h5>
                     <h5 onClick={handleReport}>({mmax})</h5>
                 </div>
-                <label>
-                    <input 
-                    className='switch'
-                    type="checkbox" 
-                    checked={checked}
-                    onChange={handleChange}
-                    />
-                    My Value
-                </label>
-                <div class="center">
-                    <input type="checkbox" id="cbx" style="display:none"/>
-                    <label for="cbx" class="toggle"><span></span></label>    
+
+                <div className='side'>
+                    <label>
+                        خرید
+                        <input className='sidebuy' type="checkbox" checked={checked} onChange={handleChange} />
+                    </label>
+
+                    <label>
+                        فروش
+                        <input className='sidesel' type="checkbox" checked={!checked} onChange={handleChange} />
+                    </label>
                 </div>
+
+
                 <div className='rprttrd'>
                     {!report?null:(
                         report.map(row=>{
