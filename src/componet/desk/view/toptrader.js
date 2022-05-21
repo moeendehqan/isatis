@@ -50,12 +50,7 @@ const Toptraders = (props) =>{
         setDatereport(e.target.value)
     }
 
-    console.log(datereport)
-    if(datereport===null){
-        setDatereport(mmax)
-    }
 
-    console.log(datereport)
 
 
     const [report, setReport] = useState(false)
@@ -63,7 +58,7 @@ const Toptraders = (props) =>{
         axios({
             method: 'post',
             url: "http://localhost:5000/api/traderreport",
-            data: {username:user, date:datereport, side:checked},
+            data: {username:user, date:mmax, side:checked},
         }).then((response)=>{
             setReport(response.data.result)
         }).catch((response)=>{
@@ -73,7 +68,7 @@ const Toptraders = (props) =>{
 
 
 
-    useEffect(handleReport,[alldate,checked,datereport])
+    //useEffect(handleReport,[alldate,checked])
 
 
     if(props.viw==='Toptraders'){
@@ -88,7 +83,6 @@ const Toptraders = (props) =>{
                             <option value={item} key={item.toString()}>{item}</option>
                             ):null}
                     </select>
-                    <h5>({mmax})</h5>
                 </div>
 
                 <div className='side'>
