@@ -67,7 +67,12 @@ const Toptraders = (props) =>{
                 <div className="dateset">
                     <img src={require('../../../img/icon/dataset.png')} alt='icon dataset'></img>
                     <h5>تاریخ گزارشگری اخرین روز</h5>
-                    <h5 onClick={handleReport}>({mmax})</h5>
+                    <select>
+                        {alldate.map(item=>
+                            <option value={item}>{item}</option>
+                            )}
+                    </select>
+                    <h5>({mmax})</h5>
                 </div>
 
                 <div className='side'>
