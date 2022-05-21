@@ -144,22 +144,22 @@ def traderreport():
     trade_collection = symbol_db['trade']
     dftrade = pd.DataFrame(trade_collection.find({'Date':date}))
     dftrade['Value'] = dftrade['Volume'] * dftrade['Price']
-    dfbuy = dftrade.groupby(by=['side']).sum()
-    dfbuy = dfbuy[['Volume','Value']]
-    dfbuy['Price'] = dfbuy['Value']/dfbuy['Volume']
-    dfbuy.index = [fnc.CodeToName(x,symbol) for x in dfbuy.index]
-    dfbuy = dfbuy.sort_values(by=['Volume'],ascending=False)
-    dfbuy = dfbuy.reset_index()
-    dfbuy = dfbuy.reset_index()
-    dfbuy = dfbuy[dfbuy.index<10]
+    dfside = dftrade.groupby(by=['side']).sum()
+    dfside = dfside[['Volume','Value']]
+    dfside['Price'] = dfside['Value']/dfside['Volume']
+    dfside.index = [fnc.CodeToName(x,symbol) for x in dfside.index]
+    dfside = dfside.sort_values(by=['Volume'],ascending=False)
+    dfside = dfside.reset_index()
+    dfside = dfside.reset_index()
+    dfside = dfside[dfside.index<10]
 
-    dfbuy.columns = ['id','name','volume','value','price']
+    dfside.columns = ['id','name','volume','value','price']
     dffinall = pd.DataFrame()
-    dffinall['value'] = dfbuy['value']
-    dffinall['price'] = dfbuy['price']
-    dffinall['volume'] = dfbuy['volume']
-    dffinall['name'] = dfbuy['name']
-    dffinall['id'] = dfbuy['id']
+    dffinall['value'] = dfside['value']
+    dffinall['price'] = dfside['price']
+    dffinall['volume'] = dfside['volume']
+    dffinall['name'] = dfside['name']
+    dffinall['id'] = dfside['id']
     dffinall['w'] = (dffinall['volume']/dffinall['volume'].max())
     dffinall['price'] = [round(x) for x in dffinall['price']]
     dffinall = dffinall.to_dict('records')
