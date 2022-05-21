@@ -80,6 +80,10 @@ const Toptraders = (props) =>{
                     />
                     My Value
                 </label>
+                <div class="center">
+                    <input type="checkbox" id="cbx" style="display:none"/>
+                    <label for="cbx" class="toggle"><span></span></label>    
+                </div>
                 <div className='rprttrd'>
                     {!report?null:(
                         report.map(row=>{
