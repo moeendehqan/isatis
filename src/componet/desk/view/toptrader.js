@@ -58,7 +58,7 @@ const Toptraders = (props) =>{
         }
     }
 
-    useEffect(handleReport,[alldate])
+    useEffect(handleReport,[alldate,checked])
 
 
     if(props.viw==='Toptraders'){
