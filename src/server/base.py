@@ -136,7 +136,7 @@ def traderreport():
     if side:
         side = 'B_account'
     else:
-        side: 'S_account'
+        side = 'S_account'
 
     symbol = pd.DataFrame(user_colection.find({'username':user}))
     symbol = symbol['symbol'][symbol.index.max()]
