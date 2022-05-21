@@ -185,6 +185,7 @@
     flex-direction: row;
     flex-grow: nowrap;
     justify-content: flex-end;
+    align-items:center;
     width: 80%;
     padding: 0 20px;
 
@@ -217,4 +218,62 @@
 .side label{
     margin: 0px 10px;
 
+}
+
+.rowtrd .info{
+    justify-self: start;
+    margin-right: auto;
+    width: 30px;
+}
+
+.rowtrd .chart{
+    margin-left: 15px;
+
+    width: 30px;
+}
+
+.detailscode{
+    position:absolute;
+    z-index:1;
+    background-color:#363e40;
+    border:3px solid;
+    border-color: #f2f2f2 ;
+    color: #f2f2f2;
+    width: 300px;
+    height: 250;
+    top:100px;
+    right:50%;
+    margin-right: -150px;
+    padding: 10px 20px;
+    border-radius:10px;
+}
+
+.detailscode p{
+    font-size: 20px;
+    text-align: left;
+}
+.detailscode h6{
+    text-align:right;
+    font-size: 14px;
+    margin-right: 10px;
+    margin-top: 5px;
+
+}
+
+
+.historycode{
+    position: absolute;
+    z-index:1;
+    background-color:#363e40;
+    border:3px solid;
+    border-color: #f2f2f2 ;
+    color: #f2f2f2;
+    top:100px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.historycode p{
+    transform: rotate(-90deg);
 }

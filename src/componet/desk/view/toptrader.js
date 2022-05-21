@@ -14,7 +14,6 @@ const Toptraders = (props) =>{
         }).then((response)=>{
             setAlldate(response.data.result)
             if(alldate!==null && mmax===null){
-                console.log('var mmax set')
                 const vldate = Object.values(alldate)
                 setMmax(Math.max(...vldate))
             }
@@ -24,9 +23,6 @@ const Toptraders = (props) =>{
     }
 
     useEffect(handleAlldate,[alldate!==null])
-
-    console.log({'all':alldate})
-    console.log({'mmax':mmax})
 
     const [checked, setChecked] = useState(false);
     const handleChange = () => {setChecked(!checked)}
@@ -70,6 +66,37 @@ const Toptraders = (props) =>{
 
     useEffect(handleReport,[mmax,checked])
 
+    const [detailsCode, setDetailsCode] = useState('')
+    const handleInfoCode = (code)=>{
+
+        axios({
+            method: 'post',
+            url: "http://localhost:5000/api/detailscode",
+            data: {username:user,code:code},
+        }).then((response)=>{
+            setDetailsCode(response.data.result)
+        }).catch((response)=>{
+            console.log(response)
+        })
+
+    }
+
+    const closeDetaileCode = () =>{
+        setDetailsCode('')
+    }
+
+    const [historyCode, setHistoryCode]  = useState('')
+    const handleHistoryCode = (code) =>{
+        axios({
+            method: 'post',
+            url: "http://localhost:5000/api/historycode",
+            data: {username:user,code:code},
+        }).then((response)=>{
+            setHistoryCode(response.data.result)
+        }).catch((response)=>{
+            console.log(response)
+        })
+    }
 
     if(props.viw==='Toptraders'){
         return(
@@ -83,24 +110,17 @@ const Toptraders = (props) =>{
                                         alldate.map(item=>
                                             <option value={item} key={item.toString()}>{item}</option>
                                             ):null}
-                                    </select>):(null)
-
-                    }
-
+                                    </select>):(null)}
                 </div>
 
                 <div className='side'>
-                    <label>
-                        خرید
+                    <label>خرید
                         <input className='sidebuy' type="checkbox" checked={checked} onChange={handleChange} />
                     </label>
-
-                    <label>
-                        فروش
+                    <label>فروش
                         <input className='sidesel' type="checkbox" checked={!checked} onChange={handleChange} />
                     </label>
                 </div>
-
 
                 <div className='rprttrd'>
                     {!report?null:(
@@ -110,14 +130,37 @@ const Toptraders = (props) =>{
                                 <div className='rowtrd' key={row.id}>
                                     <p style={ww}>{separate(row.volume)}</p>
                                     <h5>{row.name}</h5>
+                                    <img src={require('../../../img/icon/info.png')} alt='info' className='chart' onClick={(e)=>handleInfoCode(row.code)}></img>
+                                    <img src={require('../../../img/icon/chart.png')} alt='chart' className='chart' onClick={(e)=>handleHistoryCode(row.code)}></img>
+
                                 </div>
-                                )
-                        })
-                    )
-                    }
-
-
+                                )}))}
                 </div>
+                {detailsCode!==''?(
+                    <div className='detailscode'>
+                        <p onClick={closeDetaileCode}>X</p>
+                        <h6>نام:  {detailsCode.Firstname}</h6>
+                        <h6>نام خانوادگی:  {detailsCode.Lastname}</h6>
+                        <h6>تاریخ تولد:  {detailsCode.Birthday}</h6>
+                        <h6>صادره:  {detailsCode.Ispl}</h6>
+                        <h6>کدملی:  {detailsCode.NationalId}</h6>
+                        <h6>کدبورسی:  {detailsCode.Account}</h6>
+                        </div>
+                    ):null
+                }
+                {historyCode!==''?(
+                    <div className='historycode'>
+                        {historyCode.map(item =>
+                            <div className='historyday'>
+                                <div className='bar'>{item.cum}</div>
+                                <p>{item.date}</p>
+                            </div>
+                        )
+                        }
+                    </div>
+                    ):null
+                }
+
             </div>
         )
     }
