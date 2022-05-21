@@ -58,7 +58,9 @@ const Toptraders = (props) =>{
                 url: "http://localhost:5000/api/traderreport",
                 data: {username:user, date:datereport, side:checked},
             }).then((response)=>{
-                setReport(response.data.result)
+                if(response.data.res){
+                    setReport(response.data.result)
+                }
             }).catch((response)=>{
                 console.log(response)
             })

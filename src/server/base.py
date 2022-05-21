@@ -133,37 +133,41 @@ def traderreport():
     user = data['username']
     date = data['date']
     side = data['side']
-    if side:
-        side = 'B_account'
+    if int(date)>0:
+        if side:
+            side = 'B_account'
+        else:
+            side = 'S_account'
+
+        symbol = pd.DataFrame(user_colection.find({'username':user}))
+        symbol = symbol['symbol'][symbol.index.max()]
+        symbol_db = client[f'{symbol}_db']
+        trade_collection = symbol_db['trade']
+        dftrade = pd.DataFrame(trade_collection.find({'Date':date}))
+        dftrade['Value'] = dftrade['Volume'] * dftrade['Price']
+        dfside = dftrade.groupby(by=[side]).sum()
+        dfside = dfside[['Volume','Value']]
+        dfside['Price'] = dfside['Value']/dfside['Volume']
+        dfside.index = [fnc.CodeToName(x,symbol) for x in dfside.index]
+        dfside = dfside.sort_values(by=['Volume'],ascending=False)
+        dfside = dfside.reset_index()
+        dfside = dfside.reset_index()
+        dfside = dfside[dfside.index<10]
+
+        dfside.columns = ['id','name','volume','value','price']
+        dffinall = pd.DataFrame()
+        dffinall['value'] = dfside['value']
+        dffinall['price'] = dfside['price']
+        dffinall['volume'] = dfside['volume']
+        dffinall['name'] = dfside['name']
+        dffinall['id'] = dfside['id']
+        dffinall['w'] = (dffinall['volume']/dffinall['volume'].max())
+        dffinall['price'] = [round(x) for x in dffinall['price']]
+        dffinall = dffinall.to_dict('records')
+        return json.dumps({'res':True,'result':dffinall})
     else:
-        side = 'S_account'
+        return json.dumps({'res':False})
 
-    symbol = pd.DataFrame(user_colection.find({'username':user}))
-    symbol = symbol['symbol'][symbol.index.max()]
-    symbol_db = client[f'{symbol}_db']
-    trade_collection = symbol_db['trade']
-    dftrade = pd.DataFrame(trade_collection.find({'Date':date}))
-    dftrade['Value'] = dftrade['Volume'] * dftrade['Price']
-    dfside = dftrade.groupby(by=[side]).sum()
-    dfside = dfside[['Volume','Value']]
-    dfside['Price'] = dfside['Value']/dfside['Volume']
-    dfside.index = [fnc.CodeToName(x,symbol) for x in dfside.index]
-    dfside = dfside.sort_values(by=['Volume'],ascending=False)
-    dfside = dfside.reset_index()
-    dfside = dfside.reset_index()
-    dfside = dfside[dfside.index<10]
-
-    dfside.columns = ['id','name','volume','value','price']
-    dffinall = pd.DataFrame()
-    dffinall['value'] = dfside['value']
-    dffinall['price'] = dfside['price']
-    dffinall['volume'] = dfside['volume']
-    dffinall['name'] = dfside['name']
-    dffinall['id'] = dfside['id']
-    dffinall['w'] = (dffinall['volume']/dffinall['volume'].max())
-    dffinall['price'] = [round(x) for x in dffinall['price']]
-    dffinall = dffinall.to_dict('records')
-    return json.dumps({'res':True,'result':dffinall})
 
 if __name__ == '__main__':
    app.run(debug=True)
