@@ -58,6 +58,11 @@ const Toptraders = (props) =>{
         }
     }
 
+    const [datereport, setDatereport] = useState(mmax)
+    const handleDatereport = (e) =>{
+        setDatereport(e.target.value)
+    }
+
     useEffect(handleReport,[alldate,checked])
 
 
@@ -67,10 +72,11 @@ const Toptraders = (props) =>{
                 <div className="dateset">
                     <img src={require('../../../img/icon/dataset.png')} alt='icon dataset'></img>
                     <h5>تاریخ گزارشگری اخرین روز</h5>
-                    <select>
-                        {alldate.map(item=>
-                            <option value={item}>{item}</option>
-                            )}
+                    <select value={datereport} onChange={(e)=>handleDatereport(e)}>
+                        {(mmax!==null)?
+                        alldate.map(item=>
+                            <option value={item} key={item.toString()}>{item}</option>
+                            ):null}
                     </select>
                     <h5>({mmax})</h5>
                 </div>
