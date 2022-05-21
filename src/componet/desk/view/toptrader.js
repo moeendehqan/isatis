@@ -1,9 +1,7 @@
 import { useState ,useEffect} from 'react'
 import axios from 'axios'
 
-import Chart from 'react-chartjs-2';
-
-const Traders = (props) =>{
+const Toptraders = (props) =>{
 
     const user = props.user
 
@@ -62,7 +60,7 @@ const Traders = (props) =>{
     const bb = {backgroundColor: "DodgerBlue"}
 
 
-    if(props.viw==='Traders'){
+    if(props.viw==='Toptraders'){
         return(
             <div className="traders">
                 <div className="dateset">
@@ -91,7 +89,7 @@ const Traders = (props) =>{
     }
 }
 
-export default Traders
+export default Toptraders
 
 
 
