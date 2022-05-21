@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import Menu from './menu/menuright'
 import Upload from './view/upload'
-import Traders from './view/toptrader'
+import Toptraders from './view/toptrader'
 
 const Desk = (props) =>{
 
@@ -26,7 +26,7 @@ const Desk = (props) =>{
     const [menuright , setMenuright] = useState(true)
     const handleMenuright = () =>{setMenuright(!menuright)}
 
-    const [viw , setViw] = useState('Traders')
+    const [viw , setViw] = useState('Toptraders')
     const handleViw = (v) =>{
         setViw(v)
     }
@@ -43,7 +43,7 @@ const Desk = (props) =>{
                     <Menu menuright={menuright} handleViw={handleViw}/>
                     <div className='viw'>
                         <Upload viw={viw} user={user}/>
-                        <Traders viw={viw} user={user}/>
+                        <Toptraders viw={viw} user={user}/>
                     </div>
                     
 

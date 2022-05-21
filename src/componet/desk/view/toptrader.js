@@ -25,8 +25,11 @@ const Toptraders = (props) =>{
         mmax = Math.max(...vldate)
     }
 
-
+    const [checked, setChecked] = useState(false);
+    const handleChange = () => {setChecked(!checked)
     
+    
+    }
     function separate(Number) 
     {
     Number+= '';
@@ -68,6 +71,15 @@ const Toptraders = (props) =>{
                     <h5>تاریخ گزارشگری اخرین روز</h5>
                     <h5 onClick={handleReport}>({mmax})</h5>
                 </div>
+                <label>
+                    <input 
+                    className='switch'
+                    type="checkbox" 
+                    checked={checked}
+                    onChange={handleChange}
+                    />
+                    My Value
+                </label>
                 <div className='rprttrd'>
                     {!report?null:(
                         report.map(row=>{
@@ -93,10 +105,3 @@ export default Toptraders
 
 
 
-
-//{Object.keys(item).map(value => {
-//    if(value!=='id')
-//        
-//        return (<td key={Math.floor(Math.random()*1000000).toString()+item.id.toString()} className={value}>{item[value]}</td>)
-//})
-//} 
