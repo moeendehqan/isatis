@@ -229,20 +229,25 @@ def newtraders():
     trade_collection = symbol_db['trade']
     dfTrader = pd.DataFrame(trade_collection.find({}))
     alldate = list(set(dfTrader['Date'].to_list()))
-    dfnewtrader = pd.DataFrame(columns=['Date','Vulome','Num'])
+    dfnewtrader = pd.DataFrame(columns=['Date','newvol','newnum','allvol','allnum'])
     for i in alldate:
         dfTraderp = dfTrader[dfTrader['Date']<i]
         dfTraderl = dfTrader[dfTrader['Date']==i]
+        allgrp = dfTraderl.groupby(by=['B_account']).sum()
+
         if len(dfTraderp)==0:
-            dfnewtrader.append({'Date':i, 'Vulome':0, 'Num':0}, ignore_index=True)
+            dfnewtrader = dfnewtrader.append({'Date':i, 'newvol':0, 'newnum':0, 'allvol':allgrp['Volume'].sum(), 'allnum':len(allgrp['Volume'])}, ignore_index=True)
         else:
             alloldcode = set(dfTraderp['B_account'])
             dfTraderl['new'] = dfTraderl['B_account'].map( lambda x: 'old' if x in alloldcode else 'new')
             dfTraderl = dfTraderl[dfTraderl['new']!='old']
-            print('-----------------')
-            print(len(dfTraderl))
+            newnew = dfTraderl.groupby(by=['B_account']).sum()
+            newvolume = newnew['Volume'].sum()
+            newnum = len(newnew['Volume'])
+            dfnewtrader = dfnewtrader.append({'Date':i, 'newvol':newvolume, 'newnum':newnum , 'allvol':allgrp['Volume'].sum(), 'allnum':len(allgrp['Volume'])}, ignore_index=True)
 
-    return json.dumps({'res':True,'result':'dfBalance'})
+    dfnewtrader = dfnewtrader.to_dict(orient='recodes')
+    return json.dumps({'res':True,'result':dfnewtrader})
 
 
 if __name__ == '__main__':
