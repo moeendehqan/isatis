@@ -5,6 +5,7 @@ import Menu from './menu/menuright'
 import Upload from './view/upload'
 import Toptraders from './view/toptrader'
 import Newtraders from './view/newtraders'
+import Istgah from './view/istgah'
 
 const Desk = (props) =>{
 
@@ -27,7 +28,7 @@ const Desk = (props) =>{
     const [menuright , setMenuright] = useState(true)
     const handleMenuright = () =>{setMenuright(!menuright)}
 
-    const [viw , setViw] = useState('newtraders')
+    const [viw , setViw] = useState('istgah')
     const handleViw = (v) =>{
         setViw(v)
     }
@@ -46,6 +47,7 @@ const Desk = (props) =>{
                         <Upload viw={viw} user={user}/>
                         <Toptraders viw={viw} user={user}/>
                         <Newtraders viw={viw} user={user}/>
+                        <Istgah viw={viw} user={user} />
                     </div>
                     
 

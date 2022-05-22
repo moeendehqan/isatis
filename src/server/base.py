@@ -245,7 +245,13 @@ def newtraders():
             newvolume = newnew['Volume'].sum()
             newnum = len(newnew['Volume'])
             dfnewtrader = dfnewtrader.append({'Date':i, 'newvol':newvolume, 'newnum':newnum , 'allvol':allgrp['Volume'].sum(), 'allnum':len(allgrp['Volume'])}, ignore_index=True)
-
+    dfnewtrader['wwav'] = dfnewtrader['allvol'] / dfnewtrader['allvol'].max()
+    dfnewtrader['wwan'] = dfnewtrader['allnum'] / dfnewtrader['allnum'].max()
+    dfnewtrader['wwnv'] = dfnewtrader['newvol'] / dfnewtrader['allvol'].max()
+    dfnewtrader['wwnn'] = dfnewtrader['newnum'] / dfnewtrader['allnum'].max()
+    dfnewtrader = dfnewtrader.sort_values(by=['Date']).reset_index().drop(columns=['index'])
+    dfnewtrader = dfnewtrader[dfnewtrader.index<30]
+    print(dfnewtrader)
     dfnewtrader = dfnewtrader.to_dict(orient='recodes')
     return json.dumps({'res':True,'result':dfnewtrader})
 

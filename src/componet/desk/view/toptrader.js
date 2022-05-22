@@ -155,19 +155,47 @@ const Toptraders = (props) =>{
                 }
 
                 {historyCode!==''?(
-                <div className='historycode'>
-                <h6 onClick={closeHistoryCode}>X</h6>
-                {historyCode!==''?(
-                        historyCode.map(item =>{
-                            const st = {height: (Math.abs(item.ww)*100).toString()+'px',
-                                backgroundColor: (item.ww<0)?'#aa8b8b':'#8baa98',
-                                top: ((item.ww*100)/-2).toString()+'px'
-                            }
-                            return(<div className='historyday'>
-                                <div className='bar' style={st}>{item.cum}</div>
-                                <p>{item.date}</p>
-                            </div>)}
-                        )):null}
+                    <div className='historycode'>
+                    <h6 onClick={closeHistoryCode}>X</h6>
+                    <div className='posbar'>
+                        {historyCode===''?null:(
+                        historyCode.map(item=>{
+                            if (item.ww>0){
+                                var stposbar = {backgroundColor:'#a4d4aa',height:(item.ww*100).toString()+'px'}
+                                var contentposbar = item.cum
+                                }else{
+                                var stposbar = {backgroundColor:'#a4d4aa',height:'1px'}
+                                var contentposbar = ''
+                                }
+                                return(
+                                        <div style={stposbar} className='subposbar'>{contentposbar}</div>
+                                    )})
+                         )}
+                        </div>
+                        <div className='negbar'>
+                        {historyCode===''?null:(
+                        historyCode.map(item=>{
+                            if (item.ww<0){
+                                var stnegbar = {backgroundColor:'#d4a4a4',height:Math.abs(item.ww*100).toString()+'px'}
+                                var contentnegbar = item.cum
+                                }else{
+                                var stnegbar = {backgroundColor:'#d4a4a4',height:'1px'}
+                                var contentnegbar = ''
+                                }
+                                return(
+                                        <div style={stnegbar} className='subnegbar'>{contentnegbar}</div>
+                                    )})
+                         )}
+                         </div>
+                         <div className='bardate'>
+                        {historyCode===''?null:(
+                        historyCode.map(item=>{
+                                return(
+                                        <p className='bardatesub'>{item.date}</p>
+                                    )})
+                         )}
+                         </div>
+
                 </div>):null}
 
             </div>
