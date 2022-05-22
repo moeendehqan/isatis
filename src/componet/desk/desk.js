@@ -4,6 +4,7 @@ import axios from 'axios'
 import Menu from './menu/menuright'
 import Upload from './view/upload'
 import Toptraders from './view/toptrader'
+import Newtraders from './view/newtraders'
 
 const Desk = (props) =>{
 
@@ -44,6 +45,7 @@ const Desk = (props) =>{
                     <div className='viw'>
                         <Upload viw={viw} user={user}/>
                         <Toptraders viw={viw} user={user}/>
+                        <Newtraders viw={viw} user={user}/>
                     </div>
                     
 
