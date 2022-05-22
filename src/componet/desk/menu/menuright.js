@@ -7,7 +7,7 @@ const Menu = (props) =>{
         return(
             <div className="menur">
                 <button className="btm" onClick={(e)=>props.handleViw('upload')}>بارگذاری فایل</button>
-                <button className="btm" onClick={(e)=>props.handleViw('Toptraders')}>معامله گران برتر</button>
+                <button className="btm" onClick={(e)=>props.handleViw('Toptraders')}>معامله گران برتر روز</button>
             </div>
         )
     }

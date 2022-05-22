@@ -98,6 +98,10 @@ const Toptraders = (props) =>{
         })
     }
 
+    const closeHistoryCode = ()=>{
+        setHistoryCode('')
+    }
+
     if(props.viw==='Toptraders'){
         return(
             <div className="traders">
@@ -128,6 +132,7 @@ const Toptraders = (props) =>{
                             var ww = {width:(row.w *50).toString()+'%'};
                             return(
                                 <div className='rowtrd' key={row.id}>
+                                    <h6 className='avgprc'>ریال {row.price}</h6>
                                     <p style={ww}>{separate(row.volume)}</p>
                                     <h5>{row.name}</h5>
                                     <img src={require('../../../img/icon/info.png')} alt='info' className='chart' onClick={(e)=>handleInfoCode(row.code)}></img>
@@ -148,18 +153,22 @@ const Toptraders = (props) =>{
                         </div>
                     ):null
                 }
+
                 {historyCode!==''?(
-                    <div className='historycode'>
-                        {historyCode.map(item =>
-                            <div className='historyday'>
-                                <div className='bar'>{item.cum}</div>
+                <div className='historycode'>
+                <h6 onClick={closeHistoryCode}>X</h6>
+                {historyCode!==''?(
+                        historyCode.map(item =>{
+                            const st = {height: (Math.abs(item.ww)*100).toString()+'px',
+                                backgroundColor: (item.ww<0)?'#aa8b8b':'#8baa98',
+                                top: ((item.ww*100)/-2).toString()+'px'
+                            }
+                            return(<div className='historyday'>
+                                <div className='bar' style={st}>{item.cum}</div>
                                 <p>{item.date}</p>
-                            </div>
-                        )
-                        }
-                    </div>
-                    ):null
-                }
+                            </div>)}
+                        )):null}
+                </div>):null}
 
             </div>
         )

@@ -228,8 +228,11 @@
 
 .rowtrd .chart{
     margin-left: 15px;
-
     width: 30px;
+}
+
+.rowtrd .avgprc{
+    margin-right: auto;
 }
 
 .detailscode{
@@ -249,7 +252,7 @@
 }
 
 .detailscode p{
-    font-size: 20px;
+    font-size: 15px;
     text-align: left;
 }
 .detailscode h6{
@@ -271,9 +274,34 @@
     top:100px;
     display: flex;
     flex-direction: row;
+    height: 250px;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    left: 50%;
+    border-radius: 10px;
+    padding: 10px;
 
+}
+.historycode h6{
+    align-self: flex-start;
+    font-size: 14px;
 }
 
 .historycode p{
-    transform: rotate(-90deg);
+    transform: rotate(-20deg);
+    position: relative;
+    align-self: flex-end;
+    font-size: 10px;
+}
+.historyday{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 1;
+}
+
+
+.historycode .bar{
+    position: relative;
+    margin-bottom: 50px;
 }
