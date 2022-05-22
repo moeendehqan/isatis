@@ -147,7 +147,6 @@ def traderreport():
     symbol_db = client[f'{symbol}_db']
     trade_collection = symbol_db['trade']
     dftrade = pd.DataFrame(trade_collection.find({'Date':date}))
-    print(dftrade)
     dftrade['Value'] = dftrade['Volume'] * dftrade['Price']
     if len(dftrade)<=0:
         return json.dumps({'res':False})
@@ -171,7 +170,6 @@ def traderreport():
         dffinall['code'] = dfside['code']
         dffinall['w'] = (dffinall['volume']/dffinall['volume'].max())
         dffinall['price'] = [round(x) for x in dffinall['price']]
-        print(dffinall)
         dffinall = dffinall.to_dict('records')
         return json.dumps({'res':True,'result':dffinall})
 
@@ -219,7 +217,27 @@ def historycode():
     dfBalance = dfBalance.to_dict(orient='records')
     return json.dumps({'res':True,'result':dfBalance})
 
+@app.route('/api/newtraders', methods=["POST"])
+def newtraders():
+    data =  request.get_json()
+    user = data['username']
+    symbol = pd.DataFrame(user_colection.find({'username':user}))
+    symbol = symbol['symbol'][symbol.index.max()]
+    symbol_db = client[f'{symbol}_db']
+    trade_collection = symbol_db['trade']
+    dfTrader = pd.DataFrame(trade_collection.find({}))
+    alldate = list(set(dfTrader['Date'].to_list()))
+    dfnewtrader = pd.DataFrame()
+    for i in alldate:
+        dfTraderp = dfTrader[dfTrader['Date']<i]
+        if len(dfTraderp)==0:
+            dfnewtrader.append({'Date':i, 'Vulome':0, 'Num':0})
+        else:
+            alloldcode = set(dfTraderp['B_account'])
+            print(alloldcode)
+    print('-----------------')
 
+    return json.dumps({'res':True,'result':'dfBalance'})
 
 
 if __name__ == '__main__':

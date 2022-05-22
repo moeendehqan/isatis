@@ -27,7 +27,7 @@ const Desk = (props) =>{
     const [menuright , setMenuright] = useState(true)
     const handleMenuright = () =>{setMenuright(!menuright)}
 
-    const [viw , setViw] = useState('Toptraders')
+    const [viw , setViw] = useState('newtraders')
     const handleViw = (v) =>{
         setViw(v)
     }
