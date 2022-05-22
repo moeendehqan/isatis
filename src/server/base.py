@@ -132,46 +132,48 @@ def alldate():
 @app.route('/api/traderreport', methods=["POST"])
 def traderreport():
     data =  request.get_json()
-    user = data['username']
-    date = int(data['date'])
-    side = data['side']
+    try:
+        user = data['username']
+        date = int(data['date'])
+        side = data['side']
+        if side:
+            side = 'B_account'
+        else:
+            side = 'S_account'
 
+        symbol = pd.DataFrame(user_colection.find({'username':user}))
+        symbol = symbol['symbol'][symbol.index.max()]
+        symbol_db = client[f'{symbol}_db']
+        trade_collection = symbol_db['trade']
+        dftrade = pd.DataFrame(trade_collection.find({'Date':date}))
+        dftrade['Value'] = dftrade['Volume'] * dftrade['Price']
+        if len(dftrade)<=0:
+            return json.dumps({'res':False})
+        else:
+            dfside = dftrade.groupby(by=[side]).sum()
+            dfside = dfside[['Volume','Value']]
+            dfside['Price'] = dfside['Value']/dfside['Volume']
+            dfside['code'] = dfside.index
+            dfside.index = [fnc.CodeToName(x,symbol) for x in dfside.index]
+            dfside = dfside.sort_values(by=['Volume'],ascending=False)
+            dfside = dfside.reset_index()
+            dfside = dfside.reset_index()
+            dfside = dfside[dfside.index<10]
+            dfside.columns = ['id','name','volume','value','price','code']
+            dffinall = pd.DataFrame()
+            dffinall['value'] = dfside['value']
+            dffinall['price'] = dfside['price']
+            dffinall['volume'] = dfside['volume']
+            dffinall['name'] = dfside['name']
+            dffinall['id'] = dfside['id']
+            dffinall['code'] = dfside['code']
+            dffinall['w'] = (dffinall['volume']/dffinall['volume'].max())
+            dffinall['price'] = [round(x) for x in dffinall['price']]
+            dffinall = dffinall.to_dict('records')
+            return json.dumps({'res':True,'result':dffinall})
+    except:
+        return json.dumps({'res':True,'result':'no Date'})
 
-    if side:
-        side = 'B_account'
-    else:
-        side = 'S_account'
-
-    symbol = pd.DataFrame(user_colection.find({'username':user}))
-    symbol = symbol['symbol'][symbol.index.max()]
-    symbol_db = client[f'{symbol}_db']
-    trade_collection = symbol_db['trade']
-    dftrade = pd.DataFrame(trade_collection.find({'Date':date}))
-    dftrade['Value'] = dftrade['Volume'] * dftrade['Price']
-    if len(dftrade)<=0:
-        return json.dumps({'res':False})
-    else:
-        dfside = dftrade.groupby(by=[side]).sum()
-        dfside = dfside[['Volume','Value']]
-        dfside['Price'] = dfside['Value']/dfside['Volume']
-        dfside['code'] = dfside.index
-        dfside.index = [fnc.CodeToName(x,symbol) for x in dfside.index]
-        dfside = dfside.sort_values(by=['Volume'],ascending=False)
-        dfside = dfside.reset_index()
-        dfside = dfside.reset_index()
-        dfside = dfside[dfside.index<10]
-        dfside.columns = ['id','name','volume','value','price','code']
-        dffinall = pd.DataFrame()
-        dffinall['value'] = dfside['value']
-        dffinall['price'] = dfside['price']
-        dffinall['volume'] = dfside['volume']
-        dffinall['name'] = dfside['name']
-        dffinall['id'] = dfside['id']
-        dffinall['code'] = dfside['code']
-        dffinall['w'] = (dffinall['volume']/dffinall['volume'].max())
-        dffinall['price'] = [round(x) for x in dffinall['price']]
-        dffinall = dffinall.to_dict('records')
-        return json.dumps({'res':True,'result':dffinall})
 
 
 
@@ -227,15 +229,18 @@ def newtraders():
     trade_collection = symbol_db['trade']
     dfTrader = pd.DataFrame(trade_collection.find({}))
     alldate = list(set(dfTrader['Date'].to_list()))
-    dfnewtrader = pd.DataFrame()
+    dfnewtrader = pd.DataFrame(columns=['Date','Vulome','Num'])
     for i in alldate:
         dfTraderp = dfTrader[dfTrader['Date']<i]
+        dfTraderl = dfTrader[dfTrader['Date']==i]
         if len(dfTraderp)==0:
-            dfnewtrader.append({'Date':i, 'Vulome':0, 'Num':0})
+            dfnewtrader.append({'Date':i, 'Vulome':0, 'Num':0}, ignore_index=True)
         else:
             alloldcode = set(dfTraderp['B_account'])
-            print(alloldcode)
-    print('-----------------')
+            dfTraderl['new'] = dfTraderl['B_account'].map( lambda x: 'old' if x in alloldcode else 'new')
+            dfTraderl = dfTraderl[dfTraderl['new']!='old']
+            print('-----------------')
+            print(len(dfTraderl))
 
     return json.dumps({'res':True,'result':'dfBalance'})
 
