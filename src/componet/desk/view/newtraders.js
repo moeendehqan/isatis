@@ -18,11 +18,19 @@ const Newtraders = (props) =>{
         console.log(dataNewTraders)
         useEffect(handlenewtraders,[user])
     
-
     if(props.viw==='newtraders'){
         return(
-            <div>
-                جدید الورود
+            <div className="newtraders">
+                {dataNewTraders===''?null:(
+                    dataNewTraders.map(item=>{
+                        return(
+                            <p>{Object.values(item)}</p>
+                        )
+                    }
+                        )
+                )
+
+                }
             </div>
         )
     }
