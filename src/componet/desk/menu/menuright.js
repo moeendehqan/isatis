@@ -8,6 +8,7 @@ const Menu = (props) =>{
             <div className="menur">
                 <button className="btm" onClick={(e)=>props.handleViw('upload')}>بارگذاری فایل</button>
                 <button className="btm" onClick={(e)=>props.handleViw('Toptraders')}>معامله گران برتر روز</button>
+                <button className="btm" onClick={(e)=>props.handleViw('newtraders')}>معامله گران جدیدالورود</button>
             </div>
         )
     }
