@@ -13,4 +13,4 @@ const Newtraders = (props) =>{
 
 }
 
-export default Toptraders
+export default Newtraders
