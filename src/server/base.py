@@ -262,17 +262,26 @@ def istgah():
     to = data['to']
     az = min(int(form),int(to))
     ta = max(int(form),int(to))
-    side = data['side']
+    if data['side']:
+        side = 'Buy_brkr'
+    else:
+        side = 'Sel_brkr'
     symbol = pd.DataFrame(user_colection.find({'username':user}))
     symbol = symbol['symbol'][symbol.index.max()]
     symbol_db = client[f'{symbol}_db']
     trade_collection = symbol_db['trade']
-    dfTrader = pd.DataFrame(trade_collection.find({ 'Date' : { '$gt' :  az, '$lt' : ta}}))
-
+    dfTrader = pd.DataFrame(trade_collection.find({ 'Date' : { '$gte' :  az, '$lte' : ta}}))
+    dfTrader['count'] =  1
+    dfistgah = dfTrader.groupby(by=side).sum()
+    dfistgah = dfistgah.sort_values(by='Volume',ascending=False)
+    dfistgah = dfistgah[['Volume','count']].reset_index()
+    dfistgah.columns = ['Istgah','Volume','count']
+    dfistgah = dfistgah[dfistgah.index<15]
+    dfistgah = dfistgah.to_dict(orient='recodes')
     print('zzzzzzzzzzzzzzzzz')
-    print(dfTrader)
+    print(dfistgah)
 
-    return json.dumps({'res':True,'result':'dfnewtrader'})
+    return json.dumps({'res':True,'result':dfistgah})
 
 
 
