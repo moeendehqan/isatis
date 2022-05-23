@@ -37,7 +37,6 @@ const Istgah = (props) =>{
 
     const [dataIstgah, setDataIstgah] = useState(null)
     const handleDataIstgah = ()=> {
-        console.log('0')
         axios({
             method: 'post',
             url: "http://localhost:5000/api/istgah",
@@ -79,6 +78,22 @@ const Istgah = (props) =>{
                     <label>فروش
                         <input type='checkbox' checked={!side} onChange={handlecheck}/>
                     </label>
+                </div>
+                <div className="chartistgah">
+                    {dataIstgah===null?null:(
+                        dataIstgah.map(item=>{
+
+                            return(
+                                <div className="oneistgah">
+                                    {item.Volume}
+                                </div>
+
+                            )
+                        })
+                    )
+
+                    }
+
                 </div>
 
 
