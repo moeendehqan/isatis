@@ -284,22 +284,17 @@ def istgah():
     dfbrkcode = client['isatis']['broker']
     dfbrkcode = pd.DataFrame(dfbrkcode.find({})).drop(columns=['_id'])
     dfbrkcode['TBKEY'] = [x.replace(' ','') for x in dfbrkcode['TBKEY']]
-
-
+    dfbrkcode = dfbrkcode.set_index(['TBKEY'])
 
     for i in dfistgah.index:
-        key = dfistgah['name'][i]
-        try:
-            name = dfbrkcode[dfbrkcode['TBKEY']==key]
-            name = name[name.index==name.index.max()]
-            dfistgah['name'][i] = name
-        except:
-            dfistgah['name'][i] = dfistgah['TBKEY'][i]
-
+        key = dfistgah['Istgah'][i]
+        name = dfbrkcode[dfbrkcode.index==key]
+        print(key)
 
 
 
     dfistgah = dfistgah.to_dict(orient='recodes')
+    print('zzzzzzzzzzzzzzzzzzzz')
     print(dfistgah)
     return json.dumps({'res':True,'result':dfistgah})
 
