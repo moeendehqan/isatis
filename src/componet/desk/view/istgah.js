@@ -46,12 +46,26 @@ const Istgah = (props) =>{
         }).catch((response)=>{
             console.log(response)
         })
+    }
+
+
+    function separate(Number) 
+    {
+    Number+= '';
+    Number= Number.replace(',', '');
+    var x = Number.split('.');
+    var y = x[0];
+    var z= x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(y))
+    y= y.replace(rgx, '$1' + ',' + '$2');
+    return y+ z;
+    }
+
 
     useEffect(handleDataIstgah,[side,tom,frm,user])
     console.log(dataIstgah)
 
-
-    
 
     if(props.viw==='istgah'){
         return(
@@ -87,8 +101,8 @@ const Istgah = (props) =>{
 
                             return(
                                 <div className="oneistgah" key={item.Istgah}>
-                                    <p className="istgahcount">{item.count}</p>
-                                    <p>{(item.Volume/1000).toString()+' K'}</p>
+                                    <p className="istgahcount">{separate(item.count)}</p>
+                                    <p>{separate(Math.floor(item.Volume/1000)).toString()+' K'}</p>
                                     <p className="istgahw" style={stt}></p>
                                     <p className="istgahcode">{item.Istgah}</p>
                                 </div>
