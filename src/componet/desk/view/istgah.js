@@ -1,5 +1,7 @@
 import { useState ,useEffect} from "react"
 import axios from "axios"
+
+
 const Istgah = (props) =>{
 
     const user = props.user
@@ -30,9 +32,25 @@ const Istgah = (props) =>{
         settom(e.target.value)
     }
 
-    const [side,setsite] = useState(false)
-    const handlecheckbuy = ()=>{setsite(true)}
-    const handlechecksel = ()=>{setsite(false)}
+    const [side,setsite] = useState(true)
+    const handlecheck = ()=>{setsite(!side)}
+
+    const [dataIstgah, setDataIstgah] = useState(null)
+    const handleDataIstgah = ()=> {
+        console.log('0')
+        axios({
+            method: 'post',
+            url: "http://localhost:5000/api/istgah",
+            data: {username:user, form:frm, to:tom, side:side},
+        }).then((response)=>{
+            setDataIstgah(response.data.result)
+        }).catch((response)=>{
+            console.log(response)
+        })
+    }
+
+    useEffect(handleDataIstgah,[])
+    console.log(dataIstgah)
 
 
     if(props.viw==='istgah'){
@@ -56,11 +74,11 @@ const Istgah = (props) =>{
                 </div>
                 <div className="sidebox">
                     <label>خرید
-                        <input type='checkbox'></input>
+                        <input type='checkbox' checked={side} onChange={handlecheck}/>
                     </label>
                     <label>فروش
-                        <input type='checkbox'></input>
-                    </label>   
+                        <input type='checkbox' checked={!side} onChange={handlecheck}/>
+                    </label>
                 </div>
 
 
