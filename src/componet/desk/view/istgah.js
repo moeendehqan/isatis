@@ -82,14 +82,13 @@ const Istgah = (props) =>{
                 <div className="chartistgah">
                     {dataIstgah===null?null:(
                         dataIstgah.map(item=>{
-                            const stt = {with:((item.ww*80).toString()+'%')}
+                            const stt = {width:((item.ww*80).toString()+'%')}
 
                             return(
                                 <div className="oneistgah" key={item.Istgah}>
-                                    <p>{item.Istgah}</p>
-                                    <div className="istgahw" style={stt}>
-                                        {item.Volume}
-                                    </div>
+                                    <p>{item.Volume}</p>
+                                    <p className="istgahw" style={stt}></p>
+                                    <p className="istgahcode">{item.Istgah}</p>
                                 </div>
 
                             )
