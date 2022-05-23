@@ -49,7 +49,7 @@ const Istgah = (props) =>{
         })
     }
 
-    useEffect(handleDataIstgah,[])
+    useEffect(handleDataIstgah,[side,tom,frm,user])
     console.log(dataIstgah)
 
 
