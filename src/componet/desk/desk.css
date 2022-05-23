@@ -462,3 +462,30 @@
 .sidebox label{
     margin: 10px;
 }
+
+
+
+.chartistgah{
+    position: relative;
+    top: 45px;
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    background-color: #666d73;
+    margin: 0px auto;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+
+.oneistgah{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.istgahw{
+    background-color: #363e40;
+}
