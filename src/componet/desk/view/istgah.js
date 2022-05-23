@@ -46,11 +46,12 @@ const Istgah = (props) =>{
         }).catch((response)=>{
             console.log(response)
         })
-    }
 
     useEffect(handleDataIstgah,[side,tom,frm,user])
     console.log(dataIstgah)
 
+
+    
 
     if(props.viw==='istgah'){
         return(
@@ -87,7 +88,7 @@ const Istgah = (props) =>{
                             return(
                                 <div className="oneistgah" key={item.Istgah}>
                                     <p className="istgahcount">{item.count}</p>
-                                    <p>{item.Volume}</p>
+                                    <p>{(item.Volume/1000).toString()+' K'}</p>
                                     <p className="istgahw" style={stt}></p>
                                     <p className="istgahcode">{item.Istgah}</p>
                                 </div>
