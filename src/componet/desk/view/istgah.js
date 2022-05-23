@@ -4,7 +4,8 @@ const Istgah = (props) =>{
 
     const user = props.user
     const [alldate, setAlldate] = useState(null)
-    const [mmax, setMmax] = useState(null)
+    const [frm, setfrm] = useState(null)
+    const [tom, settom] = useState(null)
     const handleAlldate = () =>{
             axios({
             method: 'post',
@@ -12,40 +13,56 @@ const Istgah = (props) =>{
             data: {username:user},
         }).then((response)=>{
             setAlldate(response.data.result)
-            if(alldate!==null && mmax===null){
+            if(alldate!==null && frm===null){
                 const vldate = Object.values(alldate)
-                setMmax(Math.max(...vldate))
+                setfrm(Math.max(...vldate))
+                settom(Math.max(...vldate))
             }
         }).catch((response)=>{
             console.log(response)
         })}
     useEffect(handleAlldate,[alldate!==null])
-    console.log(alldate)
 
-    const handledtreport = (e) =>{
-        setMmax(e.target.result)
+    const handledtreportfrm = (e) =>{
+        setfrm(e.target.value)
+    }
+    const handledtreporttom = (e) =>{
+        settom(e.target.value)
     }
 
+    const [side,setsite] = useState(false)
+    const handlecheckbuy = ()=>{setsite(true)}
+    const handlechecksel = ()=>{setsite(false)}
 
 
     if(props.viw==='istgah'){
         return(
             <div className="istgah">
                 <div className="dtistgah">
-                    <span>تاریخ گزارش</span>
-                    {mmax!==null?(<select value={mmax}  onChange={(e)=>handledtreport(e)}>
-                        {mmax===null?null:(
+                    <span>تاریخ گزارش از</span>
+                    {frm!==null?(<select value={frm}  onChange={(e)=>handledtreportfrm(e)}>
+                        {frm===null?null:(
                             alldate.map(item =>{
-                                return(<option value={item}>{item}</option>)
-
-                            })
-
-                        )
-
-                        }
+                                return(<option value={item} key={item}>{item}</option>)
+                            }))}
                     </select>):null}
-
+                    <span>تا</span>
+                    {tom!==null?(<select value={tom}  onChange={(e)=>handledtreporttom(e)}>
+                        {tom===null?null:(
+                            alldate.map(item =>{
+                                return(<option value={item} key={item}>{item}</option>)
+                            }))}
+                    </select>):null}
                 </div>
+                <div className="sidebox">
+                    <label>خرید
+                        <input type='checkbox'></input>
+                    </label>
+                    <label>فروش
+                        <input type='checkbox'></input>
+                    </label>   
+                </div>
+
 
             </div>
         )
