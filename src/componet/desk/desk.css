@@ -424,7 +424,11 @@
     border:1px solid;
 }
 
-
+.istgah{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 .dtistgah{
     display: flex;
@@ -444,4 +448,17 @@
     border:0px;
     border-bottom: 1px solid;
     border-color: #363e40;
+}
+
+
+.sidebox{
+    position: relative;
+    top: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.sidebox label{
+    margin: 10px;
 }
