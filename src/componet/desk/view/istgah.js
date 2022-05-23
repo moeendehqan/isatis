@@ -71,14 +71,14 @@ const Istgah = (props) =>{
         return(
             <div className="istgah">
                 <div className="dtistgah">
-                    <span>تاریخ گزارش از</span>
+                    <span>بازه تاریخ مابین</span>
                     {frm!==null?(<select value={frm}  onChange={(e)=>handledtreportfrm(e)}>
                         {frm===null?null:(
                             alldate.map(item =>{
                                 return(<option value={item} key={item}>{item}</option>)
                             }))}
                     </select>):null}
-                    <span>تا</span>
+                    <span>و</span>
                     {tom!==null?(<select value={tom}  onChange={(e)=>handledtreporttom(e)}>
                         {tom===null?null:(
                             alldate.map(item =>{
@@ -95,16 +95,24 @@ const Istgah = (props) =>{
                     </label>
                 </div>
                 <div className="chartistgah">
+                    <div className='hci'>
+                            <p>تعداد</p>
+                            <p className="hciv">حجم معاملات</p>
+                            <p className="hcii">ایستگاه</p>
+                            <p>کد</p>
+                    </div>
                     {dataIstgah===null?null:(
                         dataIstgah.map(item=>{
-                            const stt = {width:((item.ww*70).toString()+'%')}
+                            const stt = {width:((item.ww*60).toString()+'%')}
 
                             return(
                                 <div className="oneistgah" key={item.Istgah}>
                                     <p className="istgahcount">{separate(item.count)}</p>
-                                    <p>{separate(Math.floor(item.Volume/1000)).toString()+' K'}</p>
+                                    <p className="istgahvolume">{separate(Math.floor(item.Volume/1000)).toString()+' K'}</p>
                                     <p className="istgahw" style={stt}></p>
+                                    <p className="istgahname"><span>{item.name}</span></p>
                                     <p className="istgahcode">{item.Istgah}</p>
+
                                 </div>
 
                             )

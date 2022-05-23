@@ -127,6 +127,7 @@ def alldate():
     trade_collection = symbol_db['trade']
     dftrade = pd.DataFrame(trade_collection.find({}))
     alldate = list((set(dftrade['Date'].to_list())))
+    alldate.sort()
     return json.dumps({'res':True,'result':alldate})
 
 @app.route('/api/traderreport', methods=["POST"])
@@ -158,7 +159,7 @@ def traderreport():
             dfside = dfside.sort_values(by=['Volume'],ascending=False)
             dfside = dfside.reset_index()
             dfside = dfside.reset_index()
-            dfside = dfside[dfside.index<10]
+            #dfside = dfside[dfside.index<45]
             dfside.columns = ['id','name','volume','value','price','code']
             dffinall = pd.DataFrame()
             dffinall['value'] = dfside['value']
@@ -281,21 +282,19 @@ def istgah():
     dfistgah['name'] = dfistgah['Istgah']
     
         
-    dfbrkcode = client['isatis']['broker']
-    dfbrkcode = pd.DataFrame(dfbrkcode.find({})).drop(columns=['_id'])
-    dfbrkcode['TBKEY'] = [x.replace(' ','') for x in dfbrkcode['TBKEY']]
-    dfbrkcode = dfbrkcode.set_index(['TBKEY'])
+    brkcode_colletion = client['isatis']['broker']
 
     for i in dfistgah.index:
-        key = dfistgah['Istgah'][i]
-        name = dfbrkcode[dfbrkcode.index==key]
-        print(key)
-
-
+        key = dfistgah['name'][i]
+        dfbrkcode = pd.DataFrame(brkcode_colletion.find({'TBKEY':key}))
+        if len(dfbrkcode)>0:
+            name = dfbrkcode['TBNAME'][0]
+            dfistgah['name'][i] = name.replace('مشتری‌', '')
+        else:
+            dfistgah['name'][i] = 'نامعلوم'
 
     dfistgah = dfistgah.to_dict(orient='recodes')
-    print('zzzzzzzzzzzzzzzzzzzz')
-    print(dfistgah)
+
     return json.dumps({'res':True,'result':dfistgah})
 
 

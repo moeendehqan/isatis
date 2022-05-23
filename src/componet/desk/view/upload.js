@@ -83,7 +83,8 @@ const Upload = (props) =>{
     if(props.viw==='upload'){
         return(
             <div className="upload">
-                <img src={require('../../../img/icon/upload.png')} alt='upload icon'></img>
+
+                <img id='imgup' src={require('../../../img/icon/upload.png')} alt='upload icon'></img>
                 <form className={'frmupl '+disply[1]} onSubmit={(e)=>handleFormUpload(e)}>
                     <label >
                         <span> فایل  معاملات</span>
@@ -94,7 +95,11 @@ const Upload = (props) =>{
                         <input type='file' onChange={(e)=>handlefileregister(e)} ref={fileregisterRef}></input>
                     </label>
                     <button className='uplbtn' type='submit'>بارگذاری</button>
-                    <p id='msgupload'>{msg}</p>
+                    {msg===''?null:(
+                    <div className='bxerrup'>
+                        <img src={require('../../../img/icon/error.png')} alt='error' id='icnerr'/>
+                        <p id='msgupload'>{msg}</p>
+                    </div>)}
                 </form>
                 <div className={"loader"+disply[0]}></div>
             </div>

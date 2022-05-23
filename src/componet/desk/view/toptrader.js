@@ -127,6 +127,13 @@ const Toptraders = (props) =>{
                 </div>
 
                 <div className='rprttrd'>
+                    <div className='htt'>
+                        <p className='http'>قیمت</p>
+                        <p className='httv'>حجم</p>
+                        <p className='httn'>نام</p>
+                        <p className='httd'>پروفایل</p>
+                        <p className='htta'>رفتار</p>
+                    </div>
                     {!report?null:(
                         report.map(row=>{
                             var ww = {width:(row.w *50).toString()+'%'};

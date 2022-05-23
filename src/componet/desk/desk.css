@@ -57,14 +57,9 @@
 
 }
 
-.viw{
-    width: 100%;
-    height: 450px;
-    background-color: #f2f2f2;
-}
 
 
-.upload img{
+#imgup{
     height: 80px;
     position: relative;
     top: 30px;
@@ -85,27 +80,51 @@
     flex-direction: row-reverse;
     flex-wrap: wrap;
     margin: 15px;
-    background-color: #949fa6;
+    background-image: linear-gradient(to bottom right, #8cdfeb, #e3f7fa);
     border-radius: 5px;
+    border: 4px solid #26c5da;
     min-height: 25px;
     padding: 7px 15px;
     align-items: center;
+    box-shadow: 2px 2px 10px rgba(103, 110, 116, 0.4)
 }
 
 .upload .uplbtn{
     margin-top: 20px;
-    width: 150px;
-    height: 25px;
+    width: 170px;
+    height: 35px;
     border: 0px;
-    background-color: #666d73;
+    background-color:#266cda;
     color: #f2f2f2;
-    border-radius: 5px;
+    font-weight: bolder;
+    box-shadow: 2px 2px 10px rgba(103, 110, 116, 0.4);
+    border-radius: 10px;
 }
 
 #msgupload{
+    color:#fc573b;
+    font-weight:bold;
+    font-size:14px;
+}
+
+#icnerr{
+    width:30px;
+    margin: 5px;
+
+}
+.bxerrup{
+    background-color: #ffe6e2;
+    border: 1px solid #fc573b;
+    width: 250px;
+    height: 40px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+    align-items: center;
     position: relative;
-    margin-top: 20px;
-    right: -100px;
+    top:35px;
+    margin-right: -100px;
+    border-radius: 5px;
 }
 
 .loader {
@@ -179,14 +198,13 @@
     border-radius:20px;
 }
 
-.rprttrd .rowtrd{
+.rowtrd{
     height:40px;
     display:flex;
     flex-direction: row;
     flex-grow: nowrap;
     justify-content: flex-end;
     align-items:center;
-    width: 80%;
     padding: 0 20px;
 
 }
@@ -194,15 +212,14 @@
 .rowtrd h5{
     position: relative;
     text-align: right;
-    width: 150px;
+    width: 250px;
     position: relative;
     
 }
-.rprttrd .rowtrd p{
+.rowtrd p{
     background-color:#f2f2f2;
     position: relative;
-
-    text-align: right;
+    text-align: left;
 
 }
 
@@ -316,10 +333,15 @@
 
 .subposbar{
     width: 45px;
+    border-top: 1px solid;
+    border-color: #232426;
 }
 
 .subnegbar{
     width: 45px;
+    border-top: 1px solid;
+    border-color: #232426;
+
 }
 
 .bardatesub{
@@ -471,7 +493,7 @@
     display: flex;
     flex-direction: column;
     width: 65%;
-    background-color: #949fa6;
+    background-color: #363e40;
     margin: 0px auto;
     border-radius: 10px;
     padding: 20px;
@@ -481,7 +503,7 @@
 .oneistgah{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-end;
     width: 100%;
     color: #f2f2f2;
@@ -493,10 +515,68 @@
 }
 
 .istgahcode{
-    width: 45px;
+    width: 30px;
+    background-color: #f2f2f2;
+    color: #232426;
+    margin-left: 15px;
+    border-radius: 8px;
 }
 
 .istgahcount{
     margin-right: auto;
     justify-self: start;
+}
+
+
+.istgahname{
+    width: 220px;
+    text-align: right;
+    font-size: 14px;
+}
+
+.hci{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    color: #f2f2f2;
+    padding: 0 5px;
+    font-weight: bold;
+}
+
+.hciv{
+    flex-grow: 15;
+}
+
+.hcii{
+    flex-grow: 2;
+}
+
+
+.htt{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 0 15px;
+    font-weight: bolder;
+}
+
+.httv{
+    margin-right: 30%;
+}
+
+.httn{
+    margin-right: 5%;
+}
+
+.httd{
+    margin-right: 1.5%;
+
+}
+
+.http{
+    margin-right: 52%;
+}
+
+.istgahvolume{
+    margin-right:10px;
 }
