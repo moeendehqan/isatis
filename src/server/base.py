@@ -258,10 +258,19 @@ def newtraders():
 def istgah():
     data =  request.get_json()
     user = data['username']
-    form = data['from']
+    form = data['form']
     to = data['to']
+    az = min(int(form),int(to))
+    ta = max(int(form),int(to))
     side = data['side']
+    symbol = pd.DataFrame(user_colection.find({'username':user}))
+    symbol = symbol['symbol'][symbol.index.max()]
+    symbol_db = client[f'{symbol}_db']
+    trade_collection = symbol_db['trade']
+    dfTrader = pd.DataFrame(trade_collection.find({ 'Date' : { '$gt' :  az, '$lt' : ta}}))
+
     print('zzzzzzzzzzzzzzzzz')
+    print(dfTrader)
 
     return json.dumps({'res':True,'result':'dfnewtrader'})
 
