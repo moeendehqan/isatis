@@ -251,9 +251,21 @@ def newtraders():
     dfnewtrader['wwnn'] = dfnewtrader['newnum'] / dfnewtrader['allnum'].max()
     dfnewtrader = dfnewtrader.sort_values(by=['Date']).reset_index().drop(columns=['index'])
     dfnewtrader = dfnewtrader[dfnewtrader.index<30]
-    print(dfnewtrader)
     dfnewtrader = dfnewtrader.to_dict(orient='recodes')
     return json.dumps({'res':True,'result':dfnewtrader})
+
+@app.route('/api/istgah', methods=["POST"])
+def istgah():
+    data =  request.get_json()
+    user = data['username']
+    form = data['from']
+    to = data['to']
+    side = data['side']
+    print('zzzzzzzzzzzzzzzzz')
+
+    return json.dumps({'res':True,'result':'dfnewtrader'})
+
+
 
 
 if __name__ == '__main__':
