@@ -277,6 +277,7 @@ def istgah():
     dfistgah = dfistgah[['Volume','count']].reset_index()
     dfistgah.columns = ['Istgah','Volume','count']
     dfistgah = dfistgah[dfistgah.index<15]
+    dfistgah['ww'] = dfistgah['Volume'] / dfistgah['Volume'].max()
     dfistgah = dfistgah.to_dict(orient='recodes')
     print('zzzzzzzzzzzzzzzzz')
     print(dfistgah)
