@@ -37,7 +37,7 @@ const Desk = (props) =>{
         return(
             <div className='desk'>
                 <nav className='title'>
-                    <img src={require('../../img/icon/menuhmb.png')} alt='icon menu' onClick={handleMenuright}></img>
+                    <img src={require('../../img/icon/menuhmb.png')} alt='menu' onClick={handleMenuright}></img>
                     <h3>{symbol}</h3>
                     <h4>محرمانه</h4>
                 </nav>
