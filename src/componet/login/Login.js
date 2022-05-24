@@ -74,6 +74,26 @@ const Login = (props) => {
                 <h2>رصــــد</h2>
                 <h4>سامانه گزارش  دهی امور سهام</h4>
             </div>
+            <div className='anibar'>
+                <div id='bara' className='ob'></div>
+                <div id='barb' className='ob'></div>
+                <div id='barc' className='ob'></div>
+                <div id='bard' className='ob'></div>
+                <div id='bare' className='ob'></div>
+                <div id='barf' className='ob'></div>
+                <div id='barg' className='ob'></div>
+                <div id='barh' className='ob'></div>
+                <div id='barn' className='ob'></div>
+                <div id='bari' className='ob'></div>
+                <div id='barj' className='ob'></div>
+                <div id='barb' className='ob'></div>
+                <div id='bard' className='ob'></div>
+                <div id='barc' className='ob'></div>
+                <div id='barn' className='ob'></div>
+                <div id='bari' className='ob'></div>
+                <div id='barh' className='ob'></div>
+
+            </div>
 
 
         </div>

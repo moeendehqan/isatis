@@ -5,7 +5,7 @@
     width: 100%;
     background-image: url('../../img/peakpx.jpg');
     display:flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content:center;
     flex-wrap:wrap;
     background-size: cover;
@@ -27,6 +27,7 @@
     width:250px;
     margin: 30px;
     margin-top: 100px;
+    z-index:1;
 }
 
 .ent>div{
@@ -76,4 +77,149 @@
     position: relative;
     top: 80px;
     right: 80px;
+}
+
+
+
+
+.anibar{
+    position: absolute;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    bottom:1px;
+    left:10%;
+}
+.ob{
+    width: 25px;
+    height: 25px;
+    background-color:beige;
+    margin-left: 15px;
+    opacity: 0.5;
+}
+
+#bara{animation: aa 10s linear infinite;}
+#barb{animation: bb 10s linear infinite;}
+#barc{animation: cc 10s linear infinite;}
+#bard{animation: dd 10s linear infinite;}
+#bare{animation: ee 10s linear infinite;}
+#barf{animation: ff 10s linear infinite;}
+#barg{animation: gg 10s linear infinite;}
+#barh{animation: hh 10s linear infinite;}
+#barn{animation: nn 10s linear infinite;}
+#bari{animation: ii 10s linear infinite;}
+#barj{animation: jj 10s linear infinite;}
+
+
+@keyframes aa {
+    0%  { height:150px;}
+    16% { height:200px;}
+    33% { height:120px;}
+    50% { height:50px;}
+    67% { height:80px;}
+    84% { height:180px;}
+    100%{ height:150px;}
+}
+
+@keyframes bb {
+    0%  { height:50px;}
+    16% { height:160px;}
+    33% { height:75px;}
+    50% { height:160px;}
+    67% { height:80px;}
+    84% { height:180px;}
+    100%{ height:50px;}
+}
+
+@keyframes cc {
+    0%  { height:200px;}
+    16% { height:100px;}
+    33% { height:160px;}
+    50% { height:65px;}
+    67% { height:120px;}
+    84% { height:110px;}
+    100%{ height:200px;}
+}
+
+@keyframes dd {
+    0%  { height:100px;}
+    16% { height:140px;}
+    33% { height:85px;}
+    50% { height:95px;}
+    67% { height:67px;}
+    84% { height:155px;}
+    100%{ height:100px;}
+}
+
+@keyframes ee {
+    0%  { height:25px;}
+    16% { height:85px;}
+    33% { height:55px;}
+    50% { height:120px;}
+    67% { height:45px;}
+    84% { height:90px;}
+    100%{ height:25px;}
+}
+
+
+@keyframes ff {
+    0%  { height:45px;}
+    16% { height:120px;}
+    33% { height:75px;}
+    50% { height:160px;}
+    67% { height:65px;}
+    84% { height:110px;}
+    100%{ height:45px;}
+}
+
+@keyframes gg {
+    0%  { height:80px;}
+    16% { height:160px;}
+    33% { height:105px;}
+    50% { height:190px;}
+    67% { height:95px;}
+    84% { height:160px;}
+    100%{ height:80px;}
+}
+
+@keyframes hh {
+    0%  { height:120px;}
+    16% { height:190px;}
+    33% { height:160px;}
+    50% { height:200px;}
+    67% { height:110px;}
+    84% { height:160px;}
+    100%{ height:120px;}
+}
+
+@keyframes nn {
+    0%  { height:200px;}
+    16% { height:120px;}
+    33% { height:160px;}
+    50% { height:95px;}
+    67% { height:180px;}
+    84% { height:140px;}
+    100%{ height:200px;}
+}
+
+
+@keyframes ii {
+    0%  { height:100px;}
+    16% { height:150px;}
+    33% { height:85px;}
+    50% { height:100px;}
+    67% { height:70px;}
+    84% { height:110px;}
+    100%{ height:100px;}
+}
+
+@keyframes jj {
+    0%  { height:65x;}
+    16% { height:95px;}
+    33% { height:45px;}
+    50% { height:90px;}
+    67% { height:55px;}
+    84% { height:70px;}
+    100%{ height:65px;}
 }
