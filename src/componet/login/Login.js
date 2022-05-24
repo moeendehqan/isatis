@@ -71,7 +71,7 @@ const Login = (props) => {
 
             </div>
             <div className='dtl'>
-                <h2>رنـــد</h2>
+                <h2>رصــــد</h2>
                 <h4>سامانه گزارش  دهی امور سهام</h4>
             </div>
 

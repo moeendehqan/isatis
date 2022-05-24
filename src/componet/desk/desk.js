@@ -28,7 +28,7 @@ const Desk = (props) =>{
     const [menuright , setMenuright] = useState(true)
     const handleMenuright = () =>{setMenuright(!menuright)}
 
-    const [viw , setViw] = useState('istgah')
+    const [viw , setViw] = useState('upload')
     const handleViw = (v) =>{
         setViw(v)
     }
