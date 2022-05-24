@@ -3,9 +3,9 @@
     flex-direction: row-reverse;
     justify-content: space-around;
     align-items: center;
-    background-color:#232426;
+    background-color:#2E94B9;
     height:60px;
-    color:#f2f2f2;
+    color:#F0FBFF;
     font-family: 'IBM Plex Sans Arabic';
     font-weight:700;
     font-size: 23px;
@@ -115,6 +115,7 @@
 .bxerrup{
     background-color: #ffe6e2;
     border: 1px solid #fc573b;
+    border-right: 4px solid #fc573b;
     width: 250px;
     height: 40px;
     display: flex;
