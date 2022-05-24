@@ -24,9 +24,20 @@ const Toptraders = (props) =>{
 
     useEffect(handleAlldate,[alldate!==null])
 
-    const [checked, setChecked] = useState(false);
-    const handleChange = () => {setChecked(!checked)}
+    const [checked, setChecked] = useState(true);
+    const [stcheck, setstcheck] =  useState(['sidebuyact','sidenotact'])
+    const handleChange = () => {
+    
+        if(checked!==true){
+            setstcheck(['sidebuyact','sidenotact'])
+        }else{
+            setstcheck(['sidenotact','sideselact'])
+        }
+        setChecked(!checked)
+    }
 
+    console.log(checked)
+    console.log(stcheck)
 
     function separate(Number) 
     {
@@ -117,14 +128,15 @@ const Toptraders = (props) =>{
                                     </select>):(null)}
                 </div>
 
-                <div className='side'>
-                    <label>خرید
-                        <input className='sidebuy' type="checkbox" checked={checked} onChange={handleChange} />
-                    </label>
-                    <label>فروش
-                        <input className='sidesel' type="checkbox" checked={!checked} onChange={handleChange} />
-                    </label>
-                </div>
+                    <div className='side'>
+                        <p>سمت</p>
+                        <label className={stcheck[0]} onClick={handleChange}>خرید
+                        </label>
+                        <label className={stcheck[1]} onClick={handleChange}>فروش
+                        </label>
+                    </div>
+
+
 
                 <div className='rprttrd'>
                     <div className='htt'>

@@ -137,7 +137,7 @@ def traderreport():
         user = data['username']
         date = int(data['date'])
         side = data['side']
-        if side:
+        if side==True:
             side = 'B_account'
         else:
             side = 'S_account'
