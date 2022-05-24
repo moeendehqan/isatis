@@ -36,8 +36,6 @@ const Toptraders = (props) =>{
         setChecked(!checked)
     }
 
-    console.log(checked)
-    console.log(stcheck)
 
     function separate(Number) 
     {
@@ -156,7 +154,6 @@ const Toptraders = (props) =>{
                                     <h5>{row.name}</h5>
                                     <img src={require('../../../img/icon/info.png')} alt='info' className='chart' onClick={(e)=>handleInfoCode(row.code)}></img>
                                     <img src={require('../../../img/icon/chart.png')} alt='chart' className='chart' onClick={(e)=>handleHistoryCode(row.code)}></img>
-
                                 </div>
                                 )}))}
                 </div>

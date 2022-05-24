@@ -194,25 +194,23 @@
 
 .sidebuyact{
     background-color: #0B9E5F;
-    padding: 3px;
+
 }
 .sidenotact{
-    background-color: #7A97A1;
-    padding: 3px;
+    background-color: #F0FBFF;
 }
 .sideselact{
     background-color: #EB593F;
-    padding: 3px;
+
 }
 
 .rprttrd{
     position: relative;
-    top:50px;
+    top:24px;
     margin:auto auto;
     width:80%;
-    padding: 20px;
-    background-color:#949fa6;
-    border-radius:20px;
+    background-color:#ACDCEE;
+    border: 1px solid #2E94B9;
 }
 
 .rowtrd{
@@ -223,7 +221,6 @@
     justify-content: flex-end;
     align-items:center;
     padding: 0 20px;
-
 }
 
 .rowtrd h5{
@@ -234,9 +231,11 @@
     
 }
 .rowtrd p{
-    background-color:#f2f2f2;
+    background-image: linear-gradient(15deg, #6DAEC6, #2E94B9, #6DAEC6);
     position: relative;
     text-align: left;
+    border: 1px solid #2849C7;
+    color: #F0FBFF;
 
 }
 
@@ -246,15 +245,29 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-
-
+    width: 80%;
+    margin: 0px auto;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    border-radius: 5px;
+    border: 1px solid #2E94B9;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .side label{
     border-radius: 0;
-    width: 40px;
-}
+    width: 50%;
+    height: 28px;
 
+}
+.side p{
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #2E94B9;
+    color: #F0FBFF;
+}
 
 
 
@@ -386,11 +399,11 @@
 }
 
 .barall{
-    background-color:#363e40;
+    background-color:#2E94B9;
     width: 15px;
 }
 .barnew{
-    background-color:#666d73;
+    background-color:#59D3FF;
     width: 15px;
 }
 
@@ -401,19 +414,20 @@
 
 .ntav{
     font-size:12px;
-    background-color: #363e40;
+    background-color: #2E94B9;
     color:#f2f2f2;
 }
 .ntnv{
     font-size:12px;
-    background-color: #666d73;
-    color:#f2f2f2;
+    background-color: #59D3FF;
+    color:#363e40;
 }
 
 .ntpv{
     font-size:12px;
-    background-color:#f2f2f2;
+    background-color:transparent;
     margin-bottom: 10px;
+    border-bottom: 1px solid #90B1D6;
 }
 
 .newtraders{
@@ -426,13 +440,18 @@
 }
 
 .ntvolume{
-    border:1px solid;
-    border-radius: 10px;
+    border:2px solid #2E94B9;
+    border-radius: 20px;
     padding:20px;
     margin:15px;
+    box-shadow: 12px 12px 2px 1px rgba(186, 65, 93,0.2);
 
 }
 
+.ntvolume h4{
+    color: #475053;
+
+}
 
 .helper{
     display:flex;
@@ -444,7 +463,7 @@
 
 
 .hlpall{
-    background-color:#363e40;
+    background-color:#2E94B9;
     color:#f2f2f2;
     padding:4px;
     border-radius: 3px;
@@ -452,8 +471,8 @@
 }
 
 .hlpnew{
-    background-color:#666d73;
-    color:#f2f2f2;
+    background-color:#59D3FF;
+    color:#363e40;
     padding:4px;
     border-radius: 3px;
     border:1px solid;
@@ -464,7 +483,7 @@
     color:#363e40;
     padding:4px;
     border-radius: 3px;
-    border:1px solid;
+    border:1px solid #90B1D6;
 }
 
 .istgah{
@@ -579,6 +598,7 @@
     justify-content: flex-end;
     margin: 0 15px;
     font-weight: bolder;
+    position: relative;
 }
 
 .httv{
@@ -595,7 +615,7 @@
 }
 
 .http{
-    margin-right: 52%;
+    margin-right: 48%;
 }
 
 .istgahvolume{
