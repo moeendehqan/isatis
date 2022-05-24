@@ -32,15 +32,23 @@ const Istgah = (props) =>{
         settom(e.target.value)
     }
 
-    const [side,setsite] = useState(true)
-    const handlecheck = ()=>{setsite(!side)}
-
+    const [checked, setChecked] = useState(true);
+    const [stcheck, setstcheck] =  useState(['sidebuyact','sidenotact'])
+    const handleChange = () => {
+    
+        if(checked!==true){
+            setstcheck(['sidebuyact','sidenotact'])
+        }else{
+            setstcheck(['sidenotact','sideselact'])
+        }
+        setChecked(!checked)
+    }
     const [dataIstgah, setDataIstgah] = useState(null)
     const handleDataIstgah = ()=> {
         axios({
             method: 'post',
             url: "http://localhost:5000/api/istgah",
-            data: {username:user, form:frm, to:tom, side:side},
+            data: {username:user, form:frm, to:tom, side:checked},
         }).then((response)=>{
             setDataIstgah(response.data.result)
         }).catch((response)=>{
@@ -63,7 +71,7 @@ const Istgah = (props) =>{
     }
 
 
-    useEffect(handleDataIstgah,[side,tom,frm,user])
+    useEffect(handleDataIstgah,[checked,tom,frm,user])
     console.log(dataIstgah)
 
 
@@ -86,14 +94,13 @@ const Istgah = (props) =>{
                             }))}
                     </select>):null}
                 </div>
-                <div className="sidebox">
-                    <label>خرید
-                        <input type='checkbox' checked={side} onChange={handlecheck}/>
-                    </label>
-                    <label>فروش
-                        <input type='checkbox' checked={!side} onChange={handlecheck}/>
-                    </label>
-                </div>
+                <div className='side'>
+                        <p>سمت</p>
+                        <label className={stcheck[0]} onClick={handleChange}>خرید
+                        </label>
+                        <label className={stcheck[1]} onClick={handleChange}>فروش
+                        </label>
+                    </div>
                 <div className="chartistgah">
                     <div className='hci'>
                             <p>تعداد</p>
