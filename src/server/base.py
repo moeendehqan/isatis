@@ -135,7 +135,8 @@ def traderreport():
     data =  request.get_json()
     try:
         user = data['username']
-        date = int(data['date'])
+        formm = int(data['form'])
+        tom = int(data['to'])
         side = data['side']
         if side==True:
             side = 'B_account'
@@ -146,7 +147,7 @@ def traderreport():
         symbol = symbol['symbol'][symbol.index.max()]
         symbol_db = client[f'{symbol}_db']
         trade_collection = symbol_db['trade']
-        dftrade = pd.DataFrame(trade_collection.find({'Date':date}))
+        dftrade = pd.DataFrame(trade_collection.find({ 'Date' : { '$gte' :  formm, '$lte' : tom}}))
         dftrade['Value'] = dftrade['Volume'] * dftrade['Price']
         if len(dftrade)<=0:
             return json.dumps({'res':False})

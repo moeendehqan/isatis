@@ -10,6 +10,8 @@
     font-size: 23px;
     line-height:2.5;
     box-shadow: 10px 10px 10px rgba(15, 16, 38, 0.1);
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
 }
 
 .desk .title h3{
@@ -35,36 +37,64 @@
 
 }
 .menur{
+    direction: rtl;
     position: absolute;
     display: flex;
     flex-direction: column;
-
+    width: 55px;
     z-index: 1;
     right: 0px;
-    background-color: #ACDCEE;
+    top: 150px;
+    padding-left:10px;
+    background-color: #4973F2;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    box-shadow: -10px 10px 10px 5px rgba(27, 32, 64, 0.2);
 }
-
+.slupl{
+    background-color: brown;
+}
 .menur .btm{
-    background-color: #ACDCEE;
+    background-color: #4973F2;
     border: 0px;
-    height: 45px;
-    width: 80px;
+    height: 50px;
+    width: 50px;
     color: #32393B;
     text-align: right;
-    padding-right: 15px;
-    transition: all ease 0.15s
+    margin:5px;
+    position: relative;
+    right:0px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    transition: all ease 0.5s;
+}
+.btm img{
+    width:50px;
 }
 
-
-.btm:hover{
+.btm p{
+    font-family: 'kalame_Bold';
+    font-size:20px;
+    display:flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
     position: relative;
-    background-color: #90B1D6;
+    right:0px;
+    color: #fff;
+}
+.btm:hover{
+    background-color: #3937DB;
     color: #202526;
-    width: 160px;
+    width: 210px;
+    box-shadow: -8px 8px 8px 5px rgba(27, 32, 64, 0.2);
 }
 
 #upbtm:hover ::before{
     content: 'بارگذاری فایل';
+    margin-right: 5px;
 }
 
 #toptr:hover ::before{
@@ -89,7 +119,7 @@
 
 .frmupl{
     position: relative;
-    top: 35px;
+    top: 85px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -100,25 +130,31 @@
     flex-direction: row-reverse;
     flex-wrap: wrap;
     margin: 15px;
-    background-color: #475053;
-    border-radius: 5px;
-    min-height: 25px;
+    background-color: #F2911B;
+    border-radius: 10px;
+    height: 35px;
     padding: 7px 15px;
     align-items: center;
-    box-shadow: 2px 2px 10px rgba(103, 110, 116, 0.6);
-    color: #F0FBFF;
+    box-shadow: 8px 8px 10px rgba(103, 110, 116, 0.3);
+    color: #0F1026;
 }
-
+.upload span{
+    font-family: 'kalame_Bold';
+    font-size: 1.2rem;
+}
 .upload .uplbtn{
     margin-top: 20px;
     width: 170px;
     height: 35px;
     border: 0px;
-    background-color:#2E94B9;
+    background-color:#4973F2;
     color: #f2f2f2;
     font-weight: bolder;
     box-shadow: 2px 2px 10px rgba(103, 110, 116, 0.4);
     border-radius: 10px;
+    font-family: 'kalame_Bold';
+    font-size: 1.2rem;
+    box-shadow: 8px 8px 10px rgba(103, 110, 116, 0.3);
 }
 
 #msgupload{
@@ -195,7 +231,6 @@
     position: relative;
     height: 100%;
     width: 100%;
-    background-color:#f2f2f2;
 }
 
 .dateset{
@@ -223,24 +258,32 @@
 }
 
 .sidebuyact{
-    background-color: #0B9E5F;
+    background-color: #045019;
+    font-family: 'kalame_Bold';
+    font-size: 1.1rem;
+    color: #AEFBBF;
 
 }
 .sidenotact{
     background-color: #F0FBFF;
+    color: darkslategray;
 }
 .sideselact{
-    background-color: #EB593F;
-
+    background-color: #8E1A1A;
+    font-family: 'kalame_Bold';
+    font-size: 1.1rem;
+    color:#FFC7C7;
 }
 
 .rprttrd{
     position: relative;
-    top:24px;
+    top:35px;
     margin:auto auto;
     width:80%;
     background-color:#ACDCEE;
-    border: 1px solid #2E94B9;
+    border: 1px solid #281C04;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
 }
 
 .rowtrd:nth-child(2n+0){
@@ -274,32 +317,43 @@
 
 .side{
     position: relative;
-    top: 25px;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 80%;
+    width: 100%;
     margin: 0px auto;
     flex-wrap: wrap;
     align-content: flex-end;
-    border-radius: 5px;
-    border: 1px solid #2E94B9;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
 }
 
 .side label{
     border-radius: 0;
     width: 50%;
-    height: 28px;
+    height: 45px;
+    font-size:1.3rem;
+    display:flex;
+    align-items: center;
+    justify-content: center;
 
+}
+
+.side label:first-child{
+    border-top-left-radius: 25px;
+}
+.side label:last-child{
+    border-top-right-radius: 25px;
 }
 .side p{
     width: 100%;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    background-color: #2E94B9;
-    color: #F0FBFF;
+    background-color: #F2911B;
+    color: #281C04;
+    font-family: 'kalame_Bold';
+    font-size:1.5rem;
+    height:35px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
 }
 
 
@@ -539,6 +593,8 @@
 
 .dtistgah span{
     margin: 0 15px;
+    font-family: 'kalame_Bold';
+    font-size:1.5rem;
 
 }
 
@@ -547,6 +603,7 @@
     border:0px;
     border-bottom: 1px solid;
     border-color: #363e40;
+    font-size: 1.3rem;
 }
 
 

@@ -5,7 +5,7 @@ import Desk from './componet/desk/desk';
 import {useState} from 'react';
 
 function App() {
-  const [mode, setMode] = useState('home')
+  const [mode, setMode] = useState('desk')
   const [user ,setuser] = useState('moeen')
   const handleModeApp = (m,u)=>{
     setMode(m)

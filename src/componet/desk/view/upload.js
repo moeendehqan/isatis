@@ -84,7 +84,6 @@ const Upload = (props) =>{
         return(
             <div className="upload">
 
-                <img id='imgup' src={require('../../../img/icon/upload.png')} alt='upload icon'></img>
                 <form className={'frmupl '+disply[1]} onSubmit={(e)=>handleFormUpload(e)}>
                     <label >
                         <span> فایل  معاملات</span>

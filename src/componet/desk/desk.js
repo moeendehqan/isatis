@@ -38,7 +38,7 @@ const Desk = (props) =>{
                     <h4>محرمانه</h4>
                 </nav>
                 <main>
-                    <Menu handleViw={handleViw}/>
+                    <Menu handleViw={handleViw} viw={viw} />
                     <div className='viw'>
                         <Upload viw={viw} user={user}/>
                         <Toptraders viw={viw} user={user}/>

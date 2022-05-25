@@ -56,6 +56,13 @@ const Istgah = (props) =>{
         })
     }
 
+    const slicedate = (str) =>{
+        let s =str.toString()
+        let year = s.substr(0,4)
+        let mont = s.substr(4,2)
+        let day = s.substr(6,2)
+        return year.concat('/',mont,'/',day)
+    }
 
     function separate(Number) 
     {
@@ -72,7 +79,7 @@ const Istgah = (props) =>{
 
 
     useEffect(handleDataIstgah,[checked,tom,frm,user])
-    console.log(dataIstgah)
+
 
 
     if(props.viw==='istgah'){
@@ -80,20 +87,22 @@ const Istgah = (props) =>{
             <div className="istgah">
                 <div className="dtistgah">
                     <span>بازه تاریخ مابین</span>
-                    {frm!==null?(<select value={frm}  onChange={(e)=>handledtreportfrm(e)}>
+                    {frm!==null?(<select value={(frm)}  onChange={(e)=>handledtreportfrm(e)}>
                         {frm===null?null:(
                             alldate.map(item =>{
-                                return(<option value={item} key={item}>{item}</option>)
+                                return(<option value={item} key={item}>{(item)}</option>)
                             }))}
                     </select>):null}
                     <span>و</span>
-                    {tom!==null?(<select value={tom}  onChange={(e)=>handledtreporttom(e)}>
+                    {tom!==null?(<select value={(tom)}  onChange={(e)=>handledtreporttom(e)}>
                         {tom===null?null:(
                             alldate.map(item =>{
-                                return(<option value={item} key={item}>{item}</option>)
+                                return(<option value={item} key={item}>{(item)}</option>)
                             }))}
                     </select>):null}
                 </div>
+     
+                <div className="chartistgah">
                 <div className='side'>
                         <p>سمت</p>
                         <label className={stcheck[0]} onClick={handleChange}>خرید
@@ -101,7 +110,6 @@ const Istgah = (props) =>{
                         <label className={stcheck[1]} onClick={handleChange}>فروش
                         </label>
                     </div>
-                <div className="chartistgah">
                     <div className='hci'>
                             <p>تعداد</p>
                             <p className="hciv">حجم معاملات</p>
