@@ -3,23 +3,25 @@
     flex-direction: row-reverse;
     justify-content: space-around;
     align-items: center;
-    background-color:#2E94B9;
+    background-color:#1B2040;
     height:60px;
     color:#F0FBFF;
-    font-family: 'IBM Plex Sans Arabic';
     font-weight:700;
     font-size: 23px;
     line-height:2.5;
+    box-shadow: 10px 10px 10px rgba(15, 16, 38, 0.1);
 }
 
 .desk .title h3{
+    font-family: 'kalame_Black';
     flex:5;
 }
 .desk .title h4{
     flex:0;
     margin-left: 35px;
     font-size: 15px;
-    color:#66221F;
+    color:#F2911B;
+    font-family: 'kalame_Bold';
 }
 
 .desk .title img{
@@ -36,7 +38,7 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    width: 160px;
+
     z-index: 1;
     right: 0px;
     background-color: #ACDCEE;
@@ -45,7 +47,8 @@
 .menur .btm{
     background-color: #ACDCEE;
     border: 0px;
-    height: 30px;
+    height: 45px;
+    width: 80px;
     color: #32393B;
     text-align: right;
     padding-right: 15px;
@@ -53,12 +56,28 @@
 }
 
 
-.menur .btm:hover{
+.btm:hover{
+    position: relative;
     background-color: #90B1D6;
     color: #202526;
-    transform: scale(1.2);
+    width: 160px;
 }
 
+#upbtm:hover ::before{
+    content: 'بارگذاری فایل';
+}
+
+#toptr:hover ::before{
+    content: 'معامله گران';
+}
+
+#newtr:hover ::before{
+    content: 'جدیدالورود';
+}
+
+#istgh:hover ::before{
+    content: 'استگاه های معاملاتی';
+}
 
 #imgup{
     height: 80px;

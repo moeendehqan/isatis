@@ -25,9 +25,6 @@ const Desk = (props) =>{
         })}
     useEffect(handleSymbolGet,[user])
 
-    const [menuright , setMenuright] = useState(true)
-    const handleMenuright = () =>{setMenuright(!menuright)}
-
     const [viw , setViw] = useState('upload')
     const handleViw = (v) =>{
         setViw(v)
@@ -37,12 +34,11 @@ const Desk = (props) =>{
         return(
             <div className='desk'>
                 <nav className='title'>
-                    <img src={require('../../img/icon/menuhmb.png')} alt='menu' onClick={handleMenuright}></img>
                     <h3>{symbol}</h3>
                     <h4>محرمانه</h4>
                 </nav>
                 <main>
-                    <Menu menuright={menuright} handleViw={handleViw}/>
+                    <Menu handleViw={handleViw}/>
                     <div className='viw'>
                         <Upload viw={viw} user={user}/>
                         <Toptraders viw={viw} user={user}/>
