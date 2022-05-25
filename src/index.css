@@ -1,9 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&family=Poppins:wght@300&display=swap');
+@font-face {
+  font-family: 'kalame_Regular';
+  src: url(./font/KalamehWeb/eot/KalamehWeb_Regular.eot) format('eot');
+  src: url(./font/KalamehWeb/ttf/KalamehWeb_Regular.ttf) format('ttf');
+  src: url(./font/KalamehWeb/woff/KalamehWeb_Regular.woff) format('woff');
+  src: url(./font/KalamehWeb/woff2/KalamehWeb_Regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'kalame_Bold';
+  src: url(./font/KalamehWeb/eot/KalamehWeb_Bold.eot) format('eot');
+  src: url(./font/KalamehWeb/ttf/KalamehWeb_Bold.ttf) format('ttf');
+  src: url(./font/KalamehWeb/woff/KalamehWeb_Bold.woff) format('woff');
+  src: url(./font/KalamehWeb/woff2/KalamehWeb_Bold.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'kalame_Black';
+  src: url(./font/KalamehWeb/eot/KalamehWeb_Black.eot) format('eot');
+  src: url(./font/KalamehWeb/ttf/KalamehWeb_Black.ttf) format('ttf');
+  src: url(./font/KalamehWeb/woff/KalamehWeb_Black.woff) format('woff');
+  src: url(./font/KalamehWeb/woff2/KalamehWeb_Black.woff2) format('woff2');
+}
+
 
 *{
   margin: 0px;
   padding: 0px;
-  font-family: 'IBM Plex Sans Arabic';
+  font-family: 'kalame_Regular';
 }
 
 body{

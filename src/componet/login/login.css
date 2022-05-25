@@ -3,7 +3,7 @@
 .login{
     height: 100vh;
     width: 100%;
-    background-image: url('../../img/peakpx.jpg');
+    background-image: url('../../img/bg.jpeg');
     display:flex;
     flex-direction: row-reverse;
     justify-content:center;
@@ -20,14 +20,28 @@
     margin-top: 100px;
 }
 
+.dtl h2{
+    font-family: 'kalame_Black';
+    font-size: 25px;
+}
+
 .ent{
     position: relative;
     text-align:right;
-    font-family: 'IBM Plex Sans Arabic';
     width:250px;
+    height: 250px;
     margin: 30px;
     margin-top: 100px;
+    padding: 30px;
     z-index:1;
+    animation: hobab 5s linear infinite;
+    background-color: rgba(27, 32, 64, 0.2);
+}
+
+@keyframes hobab{
+    0%, 100% {border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;}
+    33% {border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;}
+    66% {border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;}
 }
 
 .ent>div{
@@ -40,6 +54,10 @@
     margin-left: 40px;
 }
 
+.ent h2{
+    font-family: 'kalame_Black';
+    font-size: 25px;
+}
 .ent form{
     margin-top: 50px;
 }
@@ -70,156 +88,35 @@
     opacity: 0.8;
     border-radius: 5px;
     height: 30px;
-}
-
-.ent .errmsg{
-    color: #363e40;
-    position: relative;
-    top: 80px;
-    right: 80px;
+    font-family: 'kalame_Bold';
 }
 
 
 
-
-.anibar{
-    position: absolute;
+.elog{
+    margin: 35px;
+    text-align: right;
     display: flex;
-    flex-direction:row;
-    flex-wrap: nowrap;
-    align-items: flex-end;
-    bottom:1px;
-    left:10%;
+    justify-content: flex-start !important;
 }
-.ob{
-    width: 25px;
-    height: 25px;
-    background-color:beige;
-    margin-left: 15px;
-    opacity: 0.5;
-}
-
-#bara{animation: aa 10s linear infinite;}
-#barb{animation: bb 10s linear infinite;}
-#barc{animation: cc 10s linear infinite;}
-#bard{animation: dd 10s linear infinite;}
-#bare{animation: ee 10s linear infinite;}
-#barf{animation: ff 10s linear infinite;}
-#barg{animation: gg 10s linear infinite;}
-#barh{animation: hh 10s linear infinite;}
-#barn{animation: nn 10s linear infinite;}
-#bari{animation: ii 10s linear infinite;}
-#barj{animation: jj 10s linear infinite;}
-
-
-@keyframes aa {
-    0%  { height:150px;}
-    16% { height:200px;}
-    33% { height:120px;}
-    50% { height:50px;}
-    67% { height:80px;}
-    84% { height:180px;}
-    100%{ height:150px;}
-}
-
-@keyframes bb {
-    0%  { height:50px;}
-    16% { height:160px;}
-    33% { height:75px;}
-    50% { height:160px;}
-    67% { height:80px;}
-    84% { height:180px;}
-    100%{ height:50px;}
-}
-
-@keyframes cc {
-    0%  { height:200px;}
-    16% { height:100px;}
-    33% { height:160px;}
-    50% { height:65px;}
-    67% { height:120px;}
-    84% { height:110px;}
-    100%{ height:200px;}
-}
-
-@keyframes dd {
-    0%  { height:100px;}
-    16% { height:140px;}
-    33% { height:85px;}
-    50% { height:95px;}
-    67% { height:67px;}
-    84% { height:155px;}
-    100%{ height:100px;}
-}
-
-@keyframes ee {
-    0%  { height:25px;}
-    16% { height:85px;}
-    33% { height:55px;}
-    50% { height:120px;}
-    67% { height:45px;}
-    84% { height:90px;}
-    100%{ height:25px;}
+#icnerrlog{
+    position: relative;
+    right: 0px;
+    width: 35px;
 }
 
 
-@keyframes ff {
-    0%  { height:45px;}
-    16% { height:120px;}
-    33% { height:75px;}
-    50% { height:160px;}
-    67% { height:65px;}
-    84% { height:110px;}
-    100%{ height:45px;}
+.footer{
+    position: absolute;
+    bottom: 3%;
+    right: 5%;
 }
-
-@keyframes gg {
-    0%  { height:80px;}
-    16% { height:160px;}
-    33% { height:105px;}
-    50% { height:190px;}
-    67% { height:95px;}
-    84% { height:160px;}
-    100%{ height:80px;}
+.footer span{
+    font-family: 'kalame_Black';
+    font-size: 20px;
+    color: #1B2040;
+    transition: 0.3s;
 }
-
-@keyframes hh {
-    0%  { height:120px;}
-    16% { height:190px;}
-    33% { height:160px;}
-    50% { height:200px;}
-    67% { height:110px;}
-    84% { height:160px;}
-    100%{ height:120px;}
-}
-
-@keyframes nn {
-    0%  { height:200px;}
-    16% { height:120px;}
-    33% { height:160px;}
-    50% { height:95px;}
-    67% { height:180px;}
-    84% { height:140px;}
-    100%{ height:200px;}
-}
-
-
-@keyframes ii {
-    0%  { height:100px;}
-    16% { height:150px;}
-    33% { height:85px;}
-    50% { height:100px;}
-    67% { height:70px;}
-    84% { height:110px;}
-    100%{ height:100px;}
-}
-
-@keyframes jj {
-    0%  { height:65x;}
-    16% { height:95px;}
-    33% { height:45px;}
-    50% { height:90px;}
-    67% { height:55px;}
-    84% { height:70px;}
-    100%{ height:65px;}
+.footer span:hover{
+    color: #4973F2 ;
 }

@@ -1,7 +1,8 @@
 import './login.css'
 import {useState} from 'react'
 import axios from 'axios'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid'
 
 const Login = (props) => {
 
@@ -67,35 +68,19 @@ const Login = (props) => {
                     <button type='submit'>ورود</button>
                     
                 </form>
-                <p className='errmsg'>{msg}</p>
+                    {msg!==''?(<div className='bxerrup elog'>
+                        <img src={require('../../img/icon/error.png')} alt='error' id='icnerrlog'/>
+                        <p>{msg}</p>
+                    </div>):null}
 
             </div>
             <div className='dtl'>
                 <h2>رصــــد</h2>
                 <h4>سامانه گزارش  دهی امور سهام</h4>
             </div>
-            <div className='anibar'>
-                <div id='bara' className='ob'></div>
-                <div id='barb' className='ob'></div>
-                <div id='barc' className='ob'></div>
-                <div id='bard' className='ob'></div>
-                <div id='bare' className='ob'></div>
-                <div id='barf' className='ob'></div>
-                <div id='barg' className='ob'></div>
-                <div id='barh' className='ob'></div>
-                <div id='barn' className='ob'></div>
-                <div id='bari' className='ob'></div>
-                <div id='barj' className='ob'></div>
-                <div id='barb' className='ob'></div>
-                <div id='bard' className='ob'></div>
-                <div id='barc' className='ob'></div>
-                <div id='barn' className='ob'></div>
-                <div id='bari' className='ob'></div>
-                <div id='barh' className='ob'></div>
-
+            <div className='footer'>
+                <span>درباره ما <FontAwesomeIcon icon="fa-solid fa-building" /></span>
             </div>
-
-
         </div>
         )}
 }
