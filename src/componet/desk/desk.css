@@ -280,14 +280,15 @@
     top:35px;
     margin:auto auto;
     width:80%;
-    background-color:#ACDCEE;
+    background-color:#F2F2F2;
     border: 1px solid #281C04;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
+    box-shadow: 7px 7px 10px 12px rgba(40, 28, 4, 0.15);
 }
 
 .rowtrd:nth-child(2n+0){
-    background-color:#98d0e4;
+    background-color:#E6E9F1;
 }
 .rowtrd{
     height:40px;
@@ -299,20 +300,26 @@
     padding: 0 20px;
 }
 
+
 .rowtrd h5{
     position: relative;
     text-align: right;
     width: 250px;
     position: relative;
+    font-family: 'kalame_Bold';
+    font-size: 1.2rem;
     
 }
 .rowtrd p{
-    background-image: linear-gradient(15deg, #6DAEC6, #2E94B9, #6DAEC6);
+    background-color: #F2911B;
     position: relative;
-    text-align: left;
-    border: 1px solid #2849C7;
-    color: #F0FBFF;
-
+    text-align: center;
+    border: 1px double #1E1E1E;
+    color: #1E1E1E;
+    font-family: 'kalame_Bold';
+    font-size: 1.1rem;
+    box-shadow: 3px 3px 5px rgba(56, 39, 39,0.2);
+    border-radius: 6px;
 }
 
 .side{
@@ -371,28 +378,28 @@
 
 .rowtrd .avgprc{
     margin-right: auto;
+    font-size: 1.1rem;
+
 }
 
 .detailscode{
-    position:absolute;
+    position:fixed;
     z-index:1;
-    background-color:#363e40;
+    background-color:#F2F2F2;
     border:3px solid;
-    border-color: #f2f2f2 ;
-    color: #f2f2f2;
-    width: 300px;
-    height: 250;
-    top:100px;
+    border-color: #1B2040 ;
+    color: black;
+    bottom:35%;
     right:50%;
     margin-right: -150px;
-    padding: 10px 20px;
+    padding: 20px;
     border-radius:10px;
 }
 
-.detailscode p{
-    font-size: 15px;
-    text-align: left;
+.detailscode button{
+    margin-top: 10px;
 }
+
 .detailscode h6{
     text-align:right;
     font-size: 14px;
@@ -691,9 +698,15 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin: 0 15px;
+    padding: 0 15px;
     font-weight: bolder;
     position: relative;
+    background-color: #E6E9F1;
+    height: 35px;
+    font-family: 'kalame_Bold';
+    font-size: 1.2rem;
+    align-items: center;
+
 }
 
 .httv{

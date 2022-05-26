@@ -158,7 +158,7 @@ const Toptraders = (props) =>{
                             var ww = {width:(row.w *50).toString()+'%'};
                             return(
                                 <div className='rowtrd' key={row.id}>
-                                    <h6 className='avgprc'>ریال {row.price}</h6>
+                                    <h6 className='avgprc'>{separate(row.price)} ریال</h6>
                                     <p style={ww}>{separate(row.volume)}</p>
                                     <h5>{row.name}</h5>
                                     <img src={require('../../../img/icon/info.png')} alt='info' className='chart' onClick={(e)=>handleInfoCode(row.code)}></img>
@@ -168,13 +168,10 @@ const Toptraders = (props) =>{
                 </div>
                 {detailsCode!==''?(
                     <div className='detailscode'>
-                        <p onClick={closeDetaileCode}>X</p>
-                        <h6>نام:  {detailsCode.Firstname}</h6>
-                        <h6>نام خانوادگی:  {detailsCode.Lastname}</h6>
-                        <h6>تاریخ تولد:  {detailsCode.Birthday}</h6>
-                        <h6>صادره:  {detailsCode.Ispl}</h6>
-                        <h6>کدملی:  {detailsCode.NationalId}</h6>
-                        <h6>کدبورسی:  {detailsCode.Account}</h6>
+                        <h6>{detailsCode.Firstname} {detailsCode.Lastname} ، متولد {detailsCode.Birthday}</h6>
+                        <h6>با کد ملی  {detailsCode.NationalId} و صادره از {detailsCode.Ispl}</h6>
+                        <h6>و کد بورسی  {detailsCode.Account}</h6>
+                        <button onClick={closeDetaileCode}>تایید</button>
                         </div>
                     ):null
                 }
