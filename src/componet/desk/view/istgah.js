@@ -104,7 +104,6 @@ const Istgah = (props) =>{
      
                 <div className="chartistgah">
                 <div className='side'>
-                        <p>سمت</p>
                         <label className={stcheck[0]} onClick={handleChange}>خرید
                         </label>
                         <label className={stcheck[1]} onClick={handleChange}>فروش

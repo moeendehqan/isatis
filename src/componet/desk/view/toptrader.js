@@ -178,36 +178,34 @@ const Toptraders = (props) =>{
 
                 {historyCode!==''?(
                     <div className='historycode'>
-                    <h6 onClick={closeHistoryCode}>X</h6>
+                    
                     <div className='posbar'>
                         {historyCode===''?null:(
                         historyCode.map(item=>{
                             if (item.ww>0){
                                 var stposbar = {backgroundColor:'#a4d4aa',height:(item.ww*100).toString()+'px'}
-                                var contentposbar = item.cum
+                                var contentposbar = (separate(Math.floor(item.cum/1000))).toString()+' K'
                                 }else{
-                                var stposbar = {backgroundColor:'#a4d4aa',height:'1px'}
+                                var stposbar = {backgroundColor:'#a4d4aa',height:'0px'}
                                 var contentposbar = ''
                                 }
                                 return(
                                         <div style={stposbar} className='subposbar'>{contentposbar}</div>
-                                    )})
-                         )}
+                                    )}))}
                         </div>
                         <div className='negbar'>
                         {historyCode===''?null:(
                         historyCode.map(item=>{
                             if (item.ww<0){
                                 var stnegbar = {backgroundColor:'#d4a4a4',height:Math.abs(item.ww*100).toString()+'px'}
-                                var contentnegbar = item.cum
+                                var contentnegbar = (separate(Math.floor(item.cum/1000))).toString()+' K'
                                 }else{
-                                var stnegbar = {backgroundColor:'#d4a4a4',height:'1px'}
+                                var stnegbar = {backgroundColor:'#d4a4a4',height:'0px'}
                                 var contentnegbar = ''
                                 }
                                 return(
                                         <div style={stnegbar} className='subnegbar'>{contentnegbar}</div>
-                                    )})
-                         )}
+                                    )}))}
                          </div>
                          <div className='bardate'>
                         {historyCode===''?null:(
@@ -217,7 +215,7 @@ const Toptraders = (props) =>{
                                     )})
                          )}
                          </div>
-
+                         <button onClick={closeHistoryCode}>تایید</button>
                 </div>):null}
 
             </div>

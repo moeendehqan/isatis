@@ -308,7 +308,7 @@
     position: relative;
     font-family: 'kalame_Bold';
     font-size: 1.2rem;
-    
+    overflow: hidden;
 }
 .rowtrd p{
     background-color: #F2911B;
@@ -394,15 +394,23 @@
     margin-right: -150px;
     padding: 20px;
     border-radius:10px;
+    box-shadow: 10px 10px 20px 5px rgba(15, 16, 38, 0.5);
 }
 
 .detailscode button{
     margin-top: 10px;
+    width:40%;
+    background-color: #F2911B;
+    font-size: 1.1rem;
+    font-family: 'kalame_Bold';
+    border: 0px;
+    border-radius: 5px;
+    box-shadow:5px 5px 5px  rgba(15, 16, 38, 0.2);
 }
 
 .detailscode h6{
     text-align:right;
-    font-size: 14px;
+    font-size: 1.1rem;
     margin-right: 10px;
     margin-top: 5px;
 
@@ -410,25 +418,33 @@
 
 
 .historycode{
-    position: absolute;
+    position: fixed;
     z-index:1;
-    background-color:#363e40;
+    background-color:#F2F2F2;
     border:3px solid;
-    border-color: #f2f2f2 ;
-    color: #f2f2f2;
-    top:100px;
+    border-color: #0F1026 ;
+    color: #0F1026;
+    top:35%;
     display: flex;
+    min-width:150px;
     flex-direction: column;
-    height: 250px;
     flex-wrap: nowrap;
     align-items: flex-end;
-    left: 50%;
-    border-radius: 10px;
+    left: 35%;
+    border-radius: 15px;
     padding: 10px;
 }
-.historycode h6{
-    align-self: flex-start;
-    font-size: 14px;
+.historycode button{
+    align-self: center;
+    width: 40%;
+    justify-content:flex-end;
+    font-size: 1.1rem;
+    font-family: 'kalame_Bold';
+    margin-top: 30px;
+    background-color:#F2911B;
+    border:0px;
+    border-radius:5px;
+    box-shadow:5px 5px 10px 5px rgba(103, 110, 116, 0.3);
 }
 
 .historycode p{
@@ -460,20 +476,23 @@
 }
 
 .subposbar{
-    width: 45px;
+    width: 40px;
     border-top: 1px solid;
-    border-color: #232426;
+    border-color: #0F1026;
+    border-radius: 5px;
 }
 
 .subnegbar{
-    width: 45px;
+    width: 40px;
     border-top: 1px solid;
-    border-color: #232426;
+    border-color: #0F1026;
+    border-radius: 5px;
 
 }
 
 .bardatesub{
-    width: 45px;
+    width: 40px;
+    font-size: 1.3em;
 }
 
 
@@ -493,35 +512,35 @@
 }
 
 .barall{
-    background-color:#2E94B9;
+    background-color:#F2911B;
     width: 15px;
 }
 .barnew{
-    background-color:#59D3FF;
+    background-color:#FFCD4B;
     width: 15px;
 }
 
 .ntdate{
-    font-size:12px;
+    font-size:1.05rem;
     transform: rotate(-20deg);
 }
 
 .ntav{
-    font-size:12px;
-    background-color: #2E94B9;
-    color:#f2f2f2;
+    font-size:1.1rem;
+    background-color: #F2911B;
+    color:#1E1E1E;
 }
 .ntnv{
-    font-size:12px;
-    background-color: #59D3FF;
-    color:#363e40;
+    font-size:1.1rem;
+    background-color: #FFCD4B;
+    color:#0D0D0D;
 }
 
 .ntpv{
-    font-size:12px;
+    font-size:1.1rem;
     background-color:transparent;
     margin-bottom: 10px;
-    border-bottom: 1px solid #90B1D6;
+    border-bottom: 1px solid #0D0D0D;
 }
 
 .newtraders{
@@ -534,7 +553,7 @@
 }
 
 .ntvolume{
-    border:2px solid #2E94B9;
+    border:3px solid #0F1026;
     border-radius: 20px;
     padding:20px;
     margin:15px;
@@ -543,7 +562,9 @@
 }
 
 .ntvolume h4{
-    color: #475053;
+    color: #0F1026;
+    font-size:1.8rem;
+    font-family: 'kalame_Bold';
 
 }
 
@@ -557,27 +578,32 @@
 
 
 .hlpall{
-    background-color:#2E94B9;
-    color:#f2f2f2;
+    background-color:#F2911B;
+    color:#1E1E1E;
     padding:4px;
     border-radius: 3px;
     border:1px solid;
+    font-size:1.1rem;
 }
 
 .hlpnew{
-    background-color:#59D3FF;
-    color:#363e40;
+    background-color:#FFCD4B;
+    color:#0D0D0D;
     padding:4px;
     border-radius: 3px;
     border:1px solid;
+    font-size:1.1rem;
+
 }
 
 .hlpprc{
-    background-color:#f2f2f2;
-    color:#363e40;
+    background-color:transparent;
+    color:#0D0D0D;
     padding:4px;
     border-radius: 3px;
-    border:1px solid #90B1D6;
+    border:1px solid #0D0D0D;
+    font-size:1.1rem;
+
 }
 
 .istgah{
@@ -633,10 +659,15 @@
     top:24px;
     margin:auto auto;
     width:80%;
-    background-color:#ACDCEE;
-    border: 1px solid #2E94B9;
-    padding: 5px;
+    background-color:#F2F2F2;
+    border: 1px solid #281C04;
+    border-top-right-radius:25px;
+    border-top-left-radius:25px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
 }
+
 
 
 .oneistgah{
@@ -644,37 +675,50 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
-    width: 100%;
-    margin: 5px 0px;
+    align-items: center;
+    width: auto;
+    height: 40px;
+    padding: 0px 20px;
 }
 
 .oneistgah:nth-child(2n+0){
-    background-color:#c3e7f5;
+    background-color:#E6E9F1;
 }
 
 .istgahw{
-    background-image: linear-gradient(20deg,#D14A3F, #BA415D,#D14A3F);
+    background-color: #F2911B;
     border: 1px solid #3B262B;
+    height: 20px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 6px rgba(15, 16, 38, 0.15)
 }
 
 .istgahcode{
-    width: 30px;
-    background-color: #BA415D;
-    color: #F0FBFF;
+    width: 25px;
+    background-color: #FF5840;
+    color: #000000;
     margin-left: 15px;
     border-radius: 8px;
+    font-family: 'kalame_Bold';
+    padding: auto 0px; 
+    height:25px;
+    line-height:25px;
+    box-shadow: 4px 4px 4px rgba(75, 29, 19, 0.2)
 }
 
 .istgahcount{
     margin-right: auto;
     justify-self: start;
+    font-size:1.2rem;
 }
 
 
 .istgahname{
-    width: 220px;
+    width: 250px;
     text-align: right;
-    font-size: 14px;
+    font-family: 'kalame_Black';
+    font-size: 1.25rem;
+    overflow: hidden;
 }
 
 .hci{
@@ -683,6 +727,11 @@
     justify-content:space-between;
     padding: 0 5px;
     font-weight: bold;
+    background-color:#E6E9F1;
+    height: 35px;
+    font-size: 1.2rem;
+    font-family: 'kalame_Bold';
+    align-items: center;
 }
 
 .hciv{
