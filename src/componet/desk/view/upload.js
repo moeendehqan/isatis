@@ -63,7 +63,7 @@ const Upload = (props) =>{
                 formData.append('user',props.user)
                 axios({
                     method: 'post',
-                    url: "http://localhost:5000/api/getfile",
+                    url: "http://185.141.134.125:5000/api/getfile",
                     data: formData,
                     config: {headers:{'content-type': 'multipart/form-data'}}
                 }).then((response)=>{

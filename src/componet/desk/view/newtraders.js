@@ -8,7 +8,7 @@ const Newtraders = (props) =>{
     const handlenewtraders = ()=>{
         axios({
             method: 'post',
-            url: "http://localhost:5000/api/newtraders",
+            url: "http://185.141.134.125:5000/api/newtraders",
             data: {username:user},
         }).then((response)=>{
             setDataNewTraders(response.data.result)

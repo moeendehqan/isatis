@@ -11,7 +11,7 @@ const Istgah = (props) =>{
     const handleAlldate = () =>{
             axios({
             method: 'post',
-            url: "http://localhost:5000/api/alldate",
+            url: "http://185.141.134.125:5000/api/alldate",
             data: {username:user},
         }).then((response)=>{
             setAlldate(response.data.result)
@@ -47,7 +47,7 @@ const Istgah = (props) =>{
     const handleDataIstgah = ()=> {
         axios({
             method: 'post',
-            url: "http://localhost:5000/api/istgah",
+            url: "http://185.141.134.125:5000/api/istgah",
             data: {username:user, form:frm, to:tom, side:checked},
         }).then((response)=>{
             setDataIstgah(response.data.result)

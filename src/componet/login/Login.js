@@ -28,7 +28,7 @@ const Login = (props) => {
         }else{
         axios({
             method: 'post',
-            url: "http://localhost:5000/api/login",
+            url: "http://185.141.134.125:5000/api/login",
             data: {username:username, password:password, keylogin:keylogin}
         }).then((response)=>{
             if(response.data.res){
@@ -72,10 +72,9 @@ const Login = (props) => {
                         <img src={require('../../img/icon/error.png')} alt='error' id='icnerrlog'/>
                         <p>{msg}</p>
                     </div>):null}
-
             </div>
             <div className='dtl'>
-                <h2>رصــــد</h2>
+                <h2>ســـــو</h2>
                 <h4>سامانه گزارش  دهی امور سهام</h4>
             </div>
             <div className='footer'>
