@@ -10,7 +10,7 @@ const Toptraders = (props) =>{
     const handleAlldate = () =>{
             axios({
             method: 'post',
-            url: "http://185.141.134.125:5000/api/alldate",
+            url: "http://156.253.5.210:5000/api/alldate",
             data: {username:user},
         }).then((response)=>{
             setAlldate(response.data.result)
@@ -66,7 +66,7 @@ const Toptraders = (props) =>{
     const handleDataIstgah = ()=> {
         axios({
             method: 'post',
-            url: "http://185.141.134.125:5000/api/traderreport",
+            url: "http://156.253.5.210:5000/api/traderreport",
             data: {username:user, form:frm, to:tom, side:checked},
         }).then((response)=>{
             setDataIstgah(response.data.result)
@@ -84,7 +84,7 @@ const Toptraders = (props) =>{
 
         axios({
             method: 'post',
-            url: "http://185.141.134.125:5000/api/detailscode",
+            url: "http://156.253.5.210:5000/api/detailscode",
             data: {username:user,code:code},
         }).then((response)=>{
             setDetailsCode(response.data.result)
@@ -102,7 +102,7 @@ const Toptraders = (props) =>{
     const handleHistoryCode = (code) =>{
         axios({
             method: 'post',
-            url: "http://185.141.134.125:5000/api/historycode",
+            url: "http://156.253.5.210:5000/api/historycode",
             data: {username:user,code:code},
         }).then((response)=>{
             setHistoryCode(response.data.result)

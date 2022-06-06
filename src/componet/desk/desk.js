@@ -15,7 +15,7 @@ const Desk = (props) =>{
     const handleSymbolGet = () =>{
         axios({
             method: 'post',
-            url: "http://185.141.134.125:5000/api/userfromsymbol",
+            url: "http://156.253.5.210:5000/api/userfromsymbol",
             data: {username:user},
             config : {headers:{'content-type': 'multipart/form-data'}}
         }).then((response)=>{
