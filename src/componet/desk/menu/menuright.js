@@ -1,7 +1,6 @@
 import { useState } from 'react'
 const Menu = (props) =>{
     const v = props.viw
-    console.log(v)
 
 
 

@@ -2,7 +2,8 @@ import './login.css'
 import {useState} from 'react'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid'
+import { useCookies } from 'react-cookie';
+
 
 const Login = (props) => {
 
@@ -16,6 +17,10 @@ const Login = (props) => {
     const handleKeylogin = (e) =>{setKeylogin(e.target.value)}
 
     const [msg, setMsg] = useState('')
+
+    const [cookies, setCookie] = useCookies(['user']);
+
+    
 
     const handleLogin = (e)=>{
         e.preventDefault();
@@ -32,6 +37,10 @@ const Login = (props) => {
             data: {username:username, password:password, keylogin:keylogin}
         }).then((response)=>{
             if(response.data.res){
+                setCookie('username', username, { path: '/' });
+                setCookie('password', password, { path: '/' });
+                setCookie('keylogin', keylogin, { path: '/' });
+
                 props.handleModeApp('desk',username)
             }else{
                 setMsg(response.msg)

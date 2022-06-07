@@ -29,7 +29,6 @@ const Upload = (props) =>{
     if(isFileTrade){
         const typetrade = (filetrade.name.split('.')[filetrade.name.split('.').length -1])
         const alloweTrade = typeAllowe.includes(typetrade)
-        console.log(alloweTrade)
     }
     
 

@@ -30,7 +30,7 @@ const Toptraders = (props) =>{
     const handledtreporttom = (e) =>{
         settom(e.target.value)
     }
-    console.log()
+
 
     const [checked, setChecked] = useState(true);
     const [stcheck, setstcheck] =  useState(['sidebuyact','sidenotact'])
